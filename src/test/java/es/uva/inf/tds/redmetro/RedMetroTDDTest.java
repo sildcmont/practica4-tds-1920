@@ -200,9 +200,27 @@ public class RedMetroTDDTest {
 	@Test
 	@Tag("TDD")
 	void testTDDeliminaLineaExcepcion() {
-		red = new RedMetro(linea1, linea2);
+		red = new RedMetro(linea1, linea2, linea3);
 		assertThrows(IllegalArgumentException.class, () ->  red.eliminaLinea(null));
 	}
+	
+	@Test
+	@Tag("TDD")
+	void testTDDretiraLinea(){
+		red = new RedMetro(linea1, linea2, linea3);
+		red.retiraLinea(linea3);
+		Linea[] esperado = {linea1, linea2};
+		assertArrayEquals(esperado, red.getLineas().toArray());
+		
+	}
+
+	@Test
+	@Tag("TDD")
+	void testTDDretiraLineaExcepcion() {
+		red = new RedMetro(linea1, linea2, linea3);
+		assertThrows(IllegalArgumentException.class, () ->  red.retiraLinea(null));
+	}
+	
 	
 	
 	

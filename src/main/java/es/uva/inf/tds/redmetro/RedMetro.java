@@ -123,10 +123,16 @@ public class RedMetro {
 	 * 
 	 * @pre.condition {@code red.contieneLinea(linea))
 	 * @pre.condition {@code linea != null}
+	 * @pre.condition {@code red.getNumLineas() >= 3}
 	 * 
 	 * @throws IllegalArgumentException cuando no se cumplen las precondiciones
 	 */
 	public void eliminaLinea(Linea linea) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void retiraLinea(Linea linea) {
 		// TODO Auto-generated method stub
 		
 	}
