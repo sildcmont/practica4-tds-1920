@@ -156,6 +156,11 @@ public class RedMetro {
 		return null;
 	}
 
+	public ArrayList<Linea> getLineasEstacion(Estacion estacion) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 	
 	
