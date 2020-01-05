@@ -132,6 +132,17 @@ public class RedMetro {
 		
 	}
 
+	/**
+	 * Retira una linea de servicio en la red de metro 
+	 * @param linea linea que deseamos retirar
+	 * 
+	 * @pre.condition {@code red.contieneLinea(linea))
+	 * @pre.condition {@code linea != null}
+	 * @pre.condition {@code red.getNumLineas() >= 3}
+	 * 
+	 * 
+	 * @throws IllegalArgumentException cuando no se cumplen las precondiciones
+	 */
 	public void retiraLinea(Linea linea) {
 		// TODO Auto-generated method stub
 		
