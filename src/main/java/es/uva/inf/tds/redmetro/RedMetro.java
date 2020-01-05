@@ -124,6 +124,7 @@ public class RedMetro {
 	 * @pre.condition {@code red.contieneLinea(linea))
 	 * @pre.condition {@code linea != null}
 	 * 
+	 * 
 	 * @throws IllegalArgumentException cuando no se cumplen las precondiciones
 	 */
 	public void eliminaLinea(Linea linea) {
