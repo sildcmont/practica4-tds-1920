@@ -16,9 +16,24 @@ public class RedMetro {
 	 * 
 	 * @param lineas
 	 * 
-	 * @throws IllegalArgumentException cuando {@code lineas == null}
+	 * @pre.condition {@code lineas != null}
+	 * 
+	 * @throws IllegalArgumentException cuando no se cumple la precondicion
 	 */
 	public RedMetro(Linea...lineas) {
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * Crea un objeto que representa a una red de metro con varias lineas a partir de un json
+	 * 
+	 * @param json
+	 * 
+	 * @pre.condition {@code json != null}
+	 * 
+	 * @throws IllegalArgumentException cuando no se cumple la precondición
+	 */
+	public RedMetro(String json) {
 		// TODO Auto-generated constructor stub
 	}
 
