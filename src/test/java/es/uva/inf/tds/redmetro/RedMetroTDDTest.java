@@ -230,6 +230,15 @@ public class RedMetroTDDTest {
 		assertArrayEquals(esperado, red.getLineasRetiradas().toArray());
 		
 	}
+	
+	@Test
+	@Tag("TDD")
+	void testTDDgetLineasEstacion(){
+		red = new RedMetro(linea1, linea2, linea3);
+		Linea[] esperado = {linea3};
+		assertArrayEquals(esperado, red.getLineasEstacion(estacion5).toArray());
+		
+	}
 
 	
 	

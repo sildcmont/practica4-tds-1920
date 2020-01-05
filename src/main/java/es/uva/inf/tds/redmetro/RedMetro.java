@@ -156,6 +156,11 @@ public class RedMetro {
 		return null;
 	}
 
+	/**
+	 * Consulta las lineas de la red que pasan por una determinada estación
+	 * @param estacion estacion de la que queremos consultar que lineas pasan por ella
+	 * @return lista de lineas que pasan por {@code estacion}
+	 */
 	public ArrayList<Linea> getLineasEstacion(Estacion estacion) {
 		// TODO Auto-generated method stub
 		return null;
