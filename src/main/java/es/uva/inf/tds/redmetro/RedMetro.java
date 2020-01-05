@@ -140,12 +140,16 @@ public class RedMetro {
 	 * @pre.condition {@code linea != null}
 	 * @pre.condition {@code red.getNumLineas() >= 3}
 	 * 
-	 * 
 	 * @throws IllegalArgumentException cuando no se cumplen las precondiciones
 	 */
 	public void retiraLinea(Linea linea) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	public ArrayList<Linea> getLineasRetiradas() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	
