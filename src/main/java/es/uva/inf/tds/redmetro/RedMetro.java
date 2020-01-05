@@ -147,6 +147,10 @@ public class RedMetro {
 		
 	}
 
+	/**
+	 * Consulta las lineas que han sido retiradas del servicio en la red de metro 
+	 * @return lista de lineas que ya no están en servicio en la red
+	 */
 	public ArrayList<Linea> getLineasRetiradas() {
 		// TODO Auto-generated method stub
 		return null;
