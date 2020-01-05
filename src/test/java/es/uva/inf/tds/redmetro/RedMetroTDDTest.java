@@ -16,9 +16,9 @@ import org.junit.jupiter.api.Test;
 public class RedMetroTDDTest {
 	
 	private RedMetro red;
-	private CoordenadasGPS coordenada1, coordenada2, coordenada3, coordenada4, coordenada5, coordenada6, coordenada7, coordenada8;
-	private Estacion estacion1, estacion2, estacion3, estacion4;
-	private Linea linea1, linea2;
+	private CoordenadasGPS coordenada1, coordenada2, coordenada3, coordenada4, coordenada5, coordenada6, coordenada7, coordenada8, coordenada9, coordenada10, coordenada11, coordenada12;
+	private Estacion estacion1, estacion2, estacion3, estacion4, estacion5, estacion6;
+	private Linea linea1, linea2, linea3;
 	
 	@BeforeEach
 	void setUp() {
@@ -41,6 +41,14 @@ public class RedMetroTDDTest {
 		estacion4 = new Estacion("estacion4", coordenada7, coordenada8);
 		
 		linea2 = new Linea(2, "azul", estacion3, estacion4);
+		
+		coordenada9 = new CoordenadasGPS("041°10'06\"N","135°08'59\"W");
+		coordenada10 = new CoordenadasGPS("126°45'43\"S","066°45'00\"W");
+		estacion5 = new Estacion("estacion5", coordenada9, coordenada10);
+		coordenada11 = new CoordenadasGPS("007°28'35\"N","107°28'35\"E");
+		coordenada12 = new CoordenadasGPS("001º01'01\"N","000º00'03\"E");
+		estacion6 = new Estacion("estacion6", coordenada11, coordenada12);
+		linea3 = new Linea(3, "verde", estacion5, estacion6);
 		
 	}
 	
@@ -161,5 +169,40 @@ public class RedMetroTDDTest {
 		red = new RedMetro(linea1,linea2);
 		assertThrows(IllegalArgumentException.class, () ->  red.contieneLinea(null));
 	}
+	
+	@Test
+	@Tag("TDD")
+	void testTDDaddLinea(){
+		red = new RedMetro(linea1, linea2);
+		red.addLinea(linea3);
+		Linea[] esperado = {linea1, linea2, linea3};
+		assertArrayEquals(esperado, red.getLineas().toArray());
+		
+	}
 
+	@Test
+	@Tag("TDD")
+	void testTDDaddLineaExcepcion() {
+		red = new RedMetro(linea1, linea2);
+		assertThrows(IllegalArgumentException.class, () ->  red.addLinea(null));
+	}
+	
+	@Test
+	@Tag("TDD")
+	void testTDDeliminaLinea(){
+		red = new RedMetro(linea1, linea2, linea3);
+		red.eliminaLinea(linea3);
+		Linea[] esperado = {linea1, linea2};
+		assertArrayEquals(esperado, red.getLineas().toArray());
+		
+	}
+
+	@Test
+	@Tag("TDD")
+	void testTDDeliminaLineaExcepcion() {
+		red = new RedMetro(linea1, linea2);
+		assertThrows(IllegalArgumentException.class, () ->  red.eliminaLinea(null));
+	}
+	
+	
 }

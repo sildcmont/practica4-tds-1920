@@ -103,4 +103,32 @@ public class RedMetro {
 		return false;
 	}
 
+	/**
+	 * Añade una nueva linea a la red de metro 
+	 * @param linea linea que deseamos añadir 
+	 * 
+	 * @pre.condition {@code !red.contieneLinea(linea))
+	 * @pre.condition {@code linea != null}
+	 * 
+	 * @throws IllegalArgumentException cuando no se cumplen las precondiciones
+	 */
+	public void addLinea(Linea linea) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/**
+	 * Elimina una linea de la red de metro 
+	 * @param linea linea que deseamos eliminar 
+	 * 
+	 * @pre.condition {@code red.contieneLinea(linea))
+	 * @pre.condition {@code linea != null}
+	 * 
+	 * @throws IllegalArgumentException cuando no se cumplen las precondiciones
+	 */
+	public void eliminaLinea(Linea linea) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
