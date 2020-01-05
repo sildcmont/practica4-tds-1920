@@ -15,6 +15,8 @@ public class RedMetro {
 	 * Crea un objeto que representa a una red de metro que contiene varias líneas.
 	 * 
 	 * @param lineas
+	 * 
+	 * @throws IllegalArgumentException cuando {@code lineas == null}
 	 */
 	public RedMetro(Linea...lineas) {
 		// TODO Auto-generated constructor stub
