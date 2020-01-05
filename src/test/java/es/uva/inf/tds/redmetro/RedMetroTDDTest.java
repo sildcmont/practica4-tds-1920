@@ -84,6 +84,82 @@ public class RedMetroTDDTest {
 		
 	}
 	
+	@Test
+	@Tag("TDD")
+	void testTDDConstructorJSON() {
+		String json = "\"[{\\\"dorsal\\\":6,\" + \"\\\"name\\\":\\\"Iniesta\\\",\"\n" + 
+				"                + \"\\\"demarcation\\\":[\\\"Right winger\\\",\\\"Midfielder\\\"],\"\n" + 
+				"                + \"\\\"team\\\":\\\"FC Barcelona\\\"}]\";";
+		RedMetro red = new RedMetro(json);
+		Linea[] esperado = {linea1, linea2};
+		assertArrayEquals(esperado, red.getLineas().toArray());
+		
+	}
 	
+	@Test
+	@Tag("TDD")
+	void testTDDConstructorJSONNull() {
+		String json = null;
+		assertThrows(IllegalArgumentException.class, () ->  red = new RedMetro(json));
+		
+	}
+	
+	
+	@Test
+	@Tag("TDD")
+	void testTDDgetLineaNum() {
+		red = new RedMetro(linea1,linea2);
+		assertEquals(linea1, red.getLinea(1));
+	}
+	
+	@Test
+	@Tag("TDD")
+	void testTDDgetLineaNumNegativo() {
+		red = new RedMetro(linea1,linea2);
+		assertThrows(IllegalArgumentException.class, () ->  red.getLinea(-5));
+	}
+	
+	@Test
+	@Tag("TDD")
+	void testTDDgetLineaColor() {
+		red = new RedMetro(linea1,linea2);
+		assertEquals(linea1, red.getLinea("rojo"));
+	}
+	
+	@Test
+	@Tag("TDD")
+	void testTDDgetLineaColorNull() {
+		red = new RedMetro(linea1,linea2);
+		assertThrows(IllegalArgumentException.class, () ->  red.getLinea(null));
+	}
+	
+	@Test
+	@Tag("TDD")
+	void testTDDisLineaActiva() {
+		red = new RedMetro(linea1,linea2);
+		assertTrue(red.isLineaActiva(linea1));
+	}
+	
+
+	@Test
+	@Tag("TDD")
+	void testTDDisLineaActivaNull() {
+		red = new RedMetro(linea1,linea2);
+		assertThrows(IllegalArgumentException.class, () ->  red.isLineaActiva(null));
+	}
+	
+	@Test
+	@Tag("TDD")
+	void testTDDcontieneLinea() {
+		red = new RedMetro(linea1,linea2);
+		assertTrue(red.contieneLinea(linea1));
+	}
+	
+	@Test
+	@Tag("TDD")
+	void testTDDcontieneLineaNull() {
+		red = new RedMetro(linea1,linea2);
+		assertThrows(IllegalArgumentException.class, () ->  red.contieneLinea(null));
+	}
 
 }

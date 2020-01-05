@@ -1,6 +1,7 @@
 package es.uva.inf.tds.redmetro;
 
 import java.util.ArrayList;
+import java.util.function.BooleanSupplier;
 
 /**
  * Clase que representa una Red de Metro compuesta por Líneas.
@@ -44,6 +45,62 @@ public class RedMetro {
 	public ArrayList<Linea> getLineas() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	/**
+	 * Consulta una linea a partir de su número
+	 * @param numLinea numero de la linea que se quiere obtener
+	 * @return linea que se identifica con el numero introducido
+	 * 
+	 * @pre.condition {@code numLinea >= 0}
+	 * 
+	 * @throws IllegalArgumentException cuando no se cumple la precondicion
+	 */
+	public Linea getLinea(int numLinea) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/**
+	 * Consulta una linea a partir de su color
+	 * @param color color de la linea que se quiere obtener
+	 * @return linea que se identifica con el color introducido
+	 * 
+	 * @pre.condition {@code color != null}
+	 * 
+	 * @throws IllegalArgumentException cuando no se cumple la precondicion
+	 */
+	public Linea getLinea(String color) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/**
+	 * Consulta si la linea introducida esta activa en la red de metro
+	 * @param linea linea que queremos comprobar 
+	 * @return true si la linea esta activa, false si no está o si no se encuentra en la red
+	 * 
+	 * @pre.condition {@code linea != null}
+	 * 
+	 * @throws IllegalArgumentException cuando no se cumple la precondicion
+	 */
+	public boolean isLineaActiva(Linea linea) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	/**
+	 * Consulta si la linea introducida se encuentra en la red de metro 
+	 * @param linea linea que queremos comprobar
+	 * @return true si la linea se encuentra en la red, false si no se encuentra
+	 * 
+	 * @pre.condition {@code linea != null}
+	 * 
+	 * @throws IllegalArgumentException cuando no se cumple la precondicion
+	 */
+	public boolean contieneLinea(Linea linea) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }
