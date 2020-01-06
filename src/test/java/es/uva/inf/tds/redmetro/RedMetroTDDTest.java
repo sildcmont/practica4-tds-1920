@@ -280,4 +280,11 @@ public class RedMetroTDDTest {
 		assertArrayEquals(esperado, red.getConexionTrasbordo(estacion1, estacion3).toArray());
 	}
 	
+	@Test
+	@Tag("TDD")
+	void testTDDgetConexionTrasbordoExcepcion() {
+		red = new RedMetro(linea1, linea2, linea3);
+		assertThrows(IllegalArgumentException.class, () ->  red.getConexionTrasbordo(estacion1, null));
+	}
+	
 }

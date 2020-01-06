@@ -187,7 +187,7 @@ public class RedMetro {
 	}
 
 	/**
-	 * Consulta si hay conexion entre dos estaciones dadas en una misma linea (sin transbordo)
+	 * Consulta si hay conexion entre dos estaciones dadas en una misma linea (sin trasbordo)
 	 * @param estacion1 primera estacion que queremos consultar
 	 * @param estacion2 segunda estacion que queremos consultar
 	 * @return linea en la que se produce conexión, null si no hay conexion sin transbordo
@@ -204,6 +204,21 @@ public class RedMetro {
 		return null;
 	}
 
+	/**
+	 * Consulta si hay conexion entre dos estaciones dadas con la posibilidad de trasbordo.
+	 * 
+	 * @param estacion1
+	 * @param estacion2
+	 * @return lista de lineas que forman parte del trayecto en orden (la primera contiene {@code estacion1}, y la ultima {@code estacion2})
+	 * 
+	 * @pre.condition ambas estaciones deben pertenecer a alguna de las lineas de la red
+	 * @pre.condition {@code estacion1 != null}
+	 * @pre.condition {@code estacion2 != null}
+	 * @pre.condition {@code estacion1 != estacion2}
+	 * 
+	 * @throws IllegalArgumentExceptio cuando no se cumplen las precondiciones
+	 * 
+	 */
 	public ArrayList<Linea> getConexionTrasbordo(Estacion estacion1, Estacion estacion2) {
 		// TODO Auto-generated method stub
 		return null;
