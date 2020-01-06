@@ -166,6 +166,11 @@ public class RedMetro {
 		return null;
 	}
 
+	public Estacion[] getCorrespondenciaLineas(Linea linea1, Linea linea2) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 	
 	

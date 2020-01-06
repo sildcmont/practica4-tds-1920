@@ -48,7 +48,7 @@ public class RedMetroTDDTest {
 		coordenada11 = new CoordenadasGPS("007°28'35\"N","107°28'35\"E");
 		coordenada12 = new CoordenadasGPS("001º01'01\"N","000º00'03\"E");
 		estacion6 = new Estacion("estacion6", coordenada11, coordenada12);
-		linea3 = new Linea(3, "verde", estacion5, estacion6);
+		linea3 = new Linea(3, "verde", estacion5, estacion6, estacion1);
 		
 	}
 	
@@ -240,6 +240,14 @@ public class RedMetroTDDTest {
 		
 	}
 
+	@Test
+	@Tag("TDD")
+	void testTDDgetCorrespondenciaLineas() {
+		red = new RedMetro(linea1, linea2, linea3);
+		Estacion[] esperado = {estacion1};
+		assertArrayEquals(esperado, red.getCorrespondenciaLineas(linea1, linea3));
+		
+	}
 	
 	
 	
