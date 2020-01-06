@@ -239,6 +239,13 @@ public class RedMetroTDDTest {
 		assertArrayEquals(esperado, red.getLineasEstacion(estacion5).toArray());
 		
 	}
+	
+	@Test
+	@Tag("TDD")
+	void testTDDgetLineasEstacionExcepcion() {
+		red = new RedMetro(linea1, linea2, linea3);
+		assertThrows(IllegalArgumentException.class, () ->  red.getLineasEstacion(null));
+	}
 
 	@Test
 	@Tag("TDD")
