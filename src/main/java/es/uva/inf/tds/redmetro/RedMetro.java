@@ -166,6 +166,21 @@ public class RedMetro {
 		return null;
 	}
 
+	/**
+	 * Consulta en que estacion o estaciones se produce la correspondencia entre las dos lineas
+	 * introducidas. Ambas lineas deben de estar en la red. Si no hay correspondencias, se devuelve
+	 * una lista vacia.
+	 * @param linea1 Primera linea de la que queremos saber la correspondencia con la otra
+	 * @param linea2 Segunda linea de la que queremos saber la correspondencia
+	 * @return lista de estaciones en las que se produce la correspondencia 
+	 * 
+	 * @pre.condition {@code lista1 != null}
+	 * @pre.condition {@code lista2 != null}
+	 * @pre.condition {@code red.contieneLinea(linea1)}
+	 * @pre.condition {@code red.contieneLinea(linea2)}
+	 * 
+	 * @throws IllegalArgumentException cuando no se cumplen las precondiciones
+	 */
 	public Estacion[] getCorrespondenciaLineas(Linea linea1, Linea linea2) {
 		// TODO Auto-generated method stub
 		return null;
