@@ -52,6 +52,38 @@ public class RedMetroTDDTest {
 		
 	}
 	
+	@AfterEach
+	void tearDown() {
+		coordenada1 = null;
+		coordenada2 = null;
+		estacion1 = null;
+		
+		coordenada3 = null;
+		coordenada4 = null;
+		estacion2 = null;
+		
+		linea1 = null;
+		
+		coordenada5 = null;
+		coordenada6 = null;
+		estacion3 = null;
+		
+		coordenada7 = null;
+		coordenada8 = null;
+		estacion4 = null;
+		
+		linea2 = null;
+		
+		coordenada9 = null;
+		coordenada10 = null;
+		estacion5 = null;
+		coordenada11 = null;
+		coordenada12 = null;
+		estacion6 = null;
+		linea3 = null;
+		
+	}
+	
 	@Test
 	@Tag ("TDD")
 	void testTDDConstructorRedMetro() {

@@ -1,7 +1,7 @@
 package es.uva.inf.tds.redmetro;
 
 import java.util.ArrayList;
-import java.util.function.BooleanSupplier;
+
 
 import es.uva.inf.maps.CoordenadasGPS;
 
