@@ -49,9 +49,23 @@ public class RedMetroBlackBoxTest {
 	
 	@Test
 	@Tag("BlackBox")
-	void testTDDaddLineaExcepcion() {
+	void testTDDaddLineaExcepcionYaEsta() {
 		red = new RedMetro(linea1, linea2);
 		assertThrows(IllegalArgumentException.class, () ->  red.addLinea(linea1));
+	}
+	
+	@Test
+	@Tag("BlackBox")
+	void testTDDeliminaLineaExcepcionNoEsta() {
+		red = new RedMetro(linea1, linea2);
+		assertThrows(IllegalArgumentException.class, () ->  red.eliminaLinea(linea3));
+	}
+	
+	@Test
+	@Tag("BlackBox")
+	void testTDDeliminaLineaExcepcionMinimo() {
+		red = new RedMetro(linea1, linea2);
+		assertThrows(IllegalArgumentException.class, () ->  red.eliminaLinea(linea2));
 	}
 
 }
