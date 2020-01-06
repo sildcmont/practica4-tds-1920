@@ -242,6 +242,10 @@ public class RedMetro {
 		return null;
 	}
 
+	/**
+	 * Obtiene toda la información de una red de metro en formato JSON
+	 * @return json que representa la red de metro
+	 */
 	public String getJSON() {
 		// TODO Auto-generated method stub
 		return null;
