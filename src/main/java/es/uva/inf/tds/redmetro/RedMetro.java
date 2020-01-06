@@ -226,6 +226,17 @@ public class RedMetro {
 		return null;
 	}
 
+	/**
+	 * Consulta si hay una estacion cercana a la coordenada GPS dada
+	 * @param coordenada CoordenadaGPS de la que queremos comprobar la cercania de estaciones
+	 * @param i distancia maxima para establecer la cercania
+	 * @return lista de estaciones que se encuentran cerca
+	 * 
+	 * @pre.condition {@code i>=0}
+	 * @pre.condition {@code coordenada != null}
+	 * 
+	 * @throws IllegalArgumentException cuando no se cumplen las precondiciones
+	 */
 	public ArrayList<Estacion> getEstacionCercana(CoordenadasGPS coordenada, int i) {
 		// TODO Auto-generated method stub
 		return null;
