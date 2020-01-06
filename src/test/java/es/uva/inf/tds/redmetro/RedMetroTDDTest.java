@@ -261,16 +261,23 @@ public class RedMetroTDDTest {
 	void testTDDgetConexionNoTrasbordo() {
 		red = new RedMetro(linea1, linea2, linea3);
 		Linea[] esperado = {linea1};
-		Linea[] obtenido = {red.getConexionNoTransbordo(estacion1, estacion2)};
+		Linea[] obtenido = {red.getConexionNoTrasbordo(estacion1, estacion2)};
 		assertArrayEquals(esperado, obtenido);
 	}
 	
 	@Test
 	@Tag("TDD")
-	void testTDDgetConexionNoTrasbordoNull() {
+	void testTDDgetConexionNoTrasbordoExcepcion() {
 		red = new RedMetro(linea1, linea2, linea3);
-		assertThrows(IllegalArgumentException.class, () ->  red.getConexionNoTransbordo(estacion1, null));
+		assertThrows(IllegalArgumentException.class, () ->  red.getConexionNoTrasbordo(estacion1, null));
 	}
 	
+	@Test
+	@Tag("TDD")
+	void testTDDgetConexionTrasbordo() {
+		red = new RedMetro(linea1, linea2, linea3);
+		Linea[] esperado = {linea1, linea2};
+		assertArrayEquals(esperado, red.getConexionTrasbordo(estacion1, estacion3).toArray());
+	}
 	
 }

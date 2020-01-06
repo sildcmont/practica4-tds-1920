@@ -199,7 +199,12 @@ public class RedMetro {
 	 * 
 	 * @throws IllegalArgumentExceptio cuando no se cumplen las precondiciones
 	 */
-	public Linea getConexionNoTransbordo(Estacion estacion1, Estacion estacion2) {
+	public Linea getConexionNoTrasbordo(Estacion estacion1, Estacion estacion2) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public ArrayList<Linea> getConexionTrasbordo(Estacion estacion1, Estacion estacion2) {
 		// TODO Auto-generated method stub
 		return null;
 	}
