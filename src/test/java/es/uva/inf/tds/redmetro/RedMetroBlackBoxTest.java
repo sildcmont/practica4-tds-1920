@@ -51,7 +51,7 @@ public class RedMetroBlackBoxTest {
 	@Tag("BlackBox")
 	void testTDDaddLineaExcepcion() {
 		red = new RedMetro(linea1, linea2);
-		assertThrows(IllegalArgumentException.class, () ->  red.addLinea(null));
+		assertThrows(IllegalArgumentException.class, () ->  red.addLinea(linea1));
 	}
 
 }
