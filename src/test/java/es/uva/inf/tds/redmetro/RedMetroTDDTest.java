@@ -287,4 +287,12 @@ public class RedMetroTDDTest {
 		assertThrows(IllegalArgumentException.class, () ->  red.getConexionTrasbordo(estacion1, null));
 	}
 	
+	@Test
+	@Tag("TDD")
+	void testTDDgetEstacionCercana() {
+		red = new RedMetro(linea1, linea2, linea3);
+		Estacion[] esperado = {estacion1};
+		assertArrayEquals(esperado, red.getEstacionCercana(coordenada1, 100).toArray());
+		}
+	
 }

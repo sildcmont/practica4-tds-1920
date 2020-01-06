@@ -3,6 +3,8 @@ package es.uva.inf.tds.redmetro;
 import java.util.ArrayList;
 import java.util.function.BooleanSupplier;
 
+import es.uva.inf.maps.CoordenadasGPS;
+
 /**
  * Clase que representa una Red de Metro compuesta por Líneas.
  * Una red de metro debe tener al menos 2 líneas.
@@ -220,6 +222,11 @@ public class RedMetro {
 	 * 
 	 */
 	public ArrayList<Linea> getConexionTrasbordo(Estacion estacion1, Estacion estacion2) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public ArrayList<Estacion> getEstacionCercana(CoordenadasGPS coordenada, int i) {
 		// TODO Auto-generated method stub
 		return null;
 	}
