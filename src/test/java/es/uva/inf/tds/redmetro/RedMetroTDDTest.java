@@ -305,6 +305,7 @@ public class RedMetroTDDTest {
 	@Test
 	@Tag("TDD")
 	void testTDDgetJSON() {
+		red = new RedMetro(linea1, linea2, linea3);
 		String jsonEsperado = "";
 		assertEquals(jsonEsperado, red.getJSON());
 	}

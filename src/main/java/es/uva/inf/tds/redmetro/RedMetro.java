@@ -46,7 +46,7 @@ public class RedMetro {
 	 */
 	public ArrayList<Linea> getLineas() {
 		// TODO Auto-generated method stub
-		return null;
+		return new ArrayList<Linea>();
 	}
 
 	/**
@@ -155,7 +155,7 @@ public class RedMetro {
 	 */
 	public ArrayList<Linea> getLineasRetiradas() {
 		// TODO Auto-generated method stub
-		return null;
+		return new ArrayList<Linea>();
 	}
 
 	/**
@@ -165,7 +165,7 @@ public class RedMetro {
 	 */
 	public ArrayList<Linea> getLineasEstacion(Estacion estacion) {
 		// TODO Auto-generated method stub
-		return null;
+		return new ArrayList<Linea>();
 	}
 
 	/**
@@ -223,7 +223,7 @@ public class RedMetro {
 	 */
 	public ArrayList<Linea> getConexionTrasbordo(Estacion estacion1, Estacion estacion2) {
 		// TODO Auto-generated method stub
-		return null;
+		return new ArrayList<Linea>();
 	}
 
 	/**
@@ -239,7 +239,7 @@ public class RedMetro {
 	 */
 	public ArrayList<Estacion> getEstacionCercana(CoordenadasGPS coordenada, int i) {
 		// TODO Auto-generated method stub
-		return null;
+		return new ArrayList<Estacion>();
 	}
 
 	/**
@@ -248,7 +248,7 @@ public class RedMetro {
 	 */
 	public String getJSON() {
 		// TODO Auto-generated method stub
-		return null;
+		return "fake imp";
 	}
 
 	
