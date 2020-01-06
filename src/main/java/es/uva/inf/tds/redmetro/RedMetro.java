@@ -182,8 +182,9 @@ public class RedMetro {
 	 * @param linea2 Segunda linea de la que queremos saber la correspondencia
 	 * @return lista de estaciones en las que se produce la correspondencia 
 	 * 
-	 * @pre.condition {@code lista1 != null}
-	 * @pre.condition {@code lista2 != null}
+	 * @pre.condition {@code linea1 != null}
+	 * @pre.condition {@code linea2 != null}
+	 * @pre.condition {@code linea1 != linea2}
 	 * @pre.condition {@code red.contieneLinea(linea1)}
 	 * @pre.condition {@code red.contieneLinea(linea2)}
 	 * 

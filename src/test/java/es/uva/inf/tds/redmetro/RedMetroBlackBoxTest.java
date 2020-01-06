@@ -67,5 +67,47 @@ public class RedMetroBlackBoxTest {
 		red = new RedMetro(linea1, linea2);
 		assertThrows(IllegalArgumentException.class, () ->  red.eliminaLinea(linea2));
 	}
+	
+	@Test
+	@Tag("BlackBox")
+	void testTDDretiraLineaExcepcionNoEsta() {
+		red = new RedMetro(linea1, linea2);
+		assertThrows(IllegalArgumentException.class, () ->  red.retiraLinea(linea3));
+	}
+	
+	@Test
+	@Tag("BlackBox")
+	void testTDDretiraLineaExcepcionMinimo() {
+		red = new RedMetro(linea1, linea2);
+		assertThrows(IllegalArgumentException.class, () ->  red.retiraLinea(linea2));
+	}
+	
+	@Test
+	@Tag("BlackBox")
+	void testTDDgetCorrespondenciaLineasExcepcionNull() {
+		red = new RedMetro(linea1, linea2, linea3);
+		assertThrows(IllegalArgumentException.class, () ->  red.getCorrespondenciaLineas(null, linea2));
+	}
+	
+	@Test
+	@Tag("BlackBox")
+	void testTDDgetCorrespondenciaLineasExcepcionLinea1NoEsta() {
+		red = new RedMetro(linea2, linea3);
+		assertThrows(IllegalArgumentException.class, () ->  red.getCorrespondenciaLineas(linea1, linea2));
+	}
+	
+	@Test
+	@Tag("BlackBox")
+	void testTDDgetCorrespondenciaLineasExcepcionLinea2NoEsta() {
+		red = new RedMetro(linea1, linea3);
+		assertThrows(IllegalArgumentException.class, () ->  red.getCorrespondenciaLineas(linea1, linea2));
+	}
+	
+	@Test
+	@Tag("BlackBox")
+	void testTDDgetCorrespondenciaLineasExcepcionLineasIguales() {
+		red = new RedMetro(linea1, linea2, linea3);
+		assertThrows(IllegalArgumentException.class, () ->  red.getCorrespondenciaLineas(linea1, linea1));
+	}
 
 }
