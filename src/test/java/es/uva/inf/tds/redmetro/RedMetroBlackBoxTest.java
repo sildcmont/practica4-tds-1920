@@ -49,126 +49,126 @@ public class RedMetroBlackBoxTest {
 	
 	@Test
 	@Tag("BlackBox")
-	void testTDDaddLineaExcepcionYaEsta() {
+	void testBlackBoxAddLineaExcepcionYaEsta() {
 		red = new RedMetro(linea1, linea2);
 		assertThrows(IllegalArgumentException.class, () ->  red.addLinea(linea1));
 	}
 	
 	@Test
 	@Tag("BlackBox")
-	void testTDDeliminaLineaExcepcionNoEsta() {
+	void testBlackBoxEliminaLineaExcepcionNoEsta() {
 		red = new RedMetro(linea1, linea2);
 		assertThrows(IllegalArgumentException.class, () ->  red.eliminaLinea(linea3));
 	}
 	
 	@Test
 	@Tag("BlackBox")
-	void testTDDeliminaLineaExcepcionMinimo() {
+	void testBlackBoxEliminaLineaExcepcionMinimo() {
 		red = new RedMetro(linea1, linea2);
 		assertThrows(IllegalArgumentException.class, () ->  red.eliminaLinea(linea2));
 	}
 	
 	@Test
 	@Tag("BlackBox")
-	void testTDDretiraLineaExcepcionNoEsta() {
+	void testBlackBoxRetiraLineaExcepcionNoEsta() {
 		red = new RedMetro(linea1, linea2);
 		assertThrows(IllegalArgumentException.class, () ->  red.retiraLinea(linea3));
 	}
 	
 	@Test
 	@Tag("BlackBox")
-	void testTDDretiraLineaExcepcionMinimo() {
+	void testBlackBoxRetiraLineaExcepcionMinimo() {
 		red = new RedMetro(linea1, linea2);
 		assertThrows(IllegalArgumentException.class, () ->  red.retiraLinea(linea2));
 	}
 	
 	@Test
 	@Tag("BlackBox")
-	void testTDDgetCorrespondenciaLineasExcepcionNull() {
+	void testBlackBoxGetCorrespondenciaLineasExcepcionNull() {
 		red = new RedMetro(linea1, linea2, linea3);
 		assertThrows(IllegalArgumentException.class, () ->  red.getCorrespondenciaLineas(null, linea2));
 	}
 	
 	@Test
 	@Tag("BlackBox")
-	void testTDDgetCorrespondenciaLineasExcepcionLinea1NoEsta() {
+	void testBlackBoxGetCorrespondenciaLineasExcepcionLinea1NoEsta() {
 		red = new RedMetro(linea2, linea3);
 		assertThrows(IllegalArgumentException.class, () ->  red.getCorrespondenciaLineas(linea1, linea2));
 	}
 	
 	@Test
 	@Tag("BlackBox")
-	void testTDDgetCorrespondenciaLineasExcepcionLinea2NoEsta() {
+	void testBlackBoxGetCorrespondenciaLineasExcepcionLinea2NoEsta() {
 		red = new RedMetro(linea1, linea3);
 		assertThrows(IllegalArgumentException.class, () ->  red.getCorrespondenciaLineas(linea1, linea2));
 	}
 	
 	@Test
 	@Tag("BlackBox")
-	void testTDDgetCorrespondenciaLineasExcepcionLineasIguales() {
+	void testBlackBoxGetCorrespondenciaLineasExcepcionLineasIguales() {
 		red = new RedMetro(linea1, linea2, linea3);
 		assertThrows(IllegalArgumentException.class, () ->  red.getCorrespondenciaLineas(linea1, linea1));
 	}
 	
 	@Test
 	@Tag("BlackBox")
-	void testTDDgetConexionNoTrasbordoExcepcionNull() {
+	void testBlackBoxGetConexionNoTrasbordoExcepcionNull() {
 		red = new RedMetro(linea1, linea2, linea3);
 		assertThrows(IllegalArgumentException.class, () ->  red.getConexionNoTrasbordo(null, estacion2));
 	}
 	
 	@Test
 	@Tag("BlackBox")
-	void testTDDgetConexionNoTrasbordoExcepcionEstacionNoPertenece1() {
+	void testBlackBoxGetConexionNoTrasbordoExcepcionEstacionNoPertenece1() {
 		red = new RedMetro(linea1, linea2);
 		assertThrows(IllegalArgumentException.class, () ->  red.getConexionNoTrasbordo(estacion1, estacion5));
 	}
 	
 	@Test
 	@Tag("BlackBox")
-	void testTDDgetConexionNoTrasbordoExcepcionEstacionNoPertenece2() {
+	void testBlackBoxGetConexionNoTrasbordoExcepcionEstacionNoPertenece2() {
 		red = new RedMetro(linea1, linea2);
 		assertThrows(IllegalArgumentException.class, () ->  red.getConexionNoTrasbordo(estacion5, estacion1));
 	}
 	
 	@Test
 	@Tag("BlackBox")
-	void testTDDgetConexionNoTrasbordoExcepcionEstacionesIguales() {
+	void testBlackBoxGetConexionNoTrasbordoExcepcionEstacionesIguales() {
 		red = new RedMetro(linea1, linea2, linea3);
 		assertThrows(IllegalArgumentException.class, () ->  red.getConexionNoTrasbordo(estacion2, estacion2));
 	}
 	
 	@Test
 	@Tag("BlackBox")
-	void testTDDgetConexionTrasbordoExcepcionNull() {
+	void testBlackBoxGetConexionTrasbordoExcepcionNull() {
 		red = new RedMetro(linea1, linea2, linea3);
 		assertThrows(IllegalArgumentException.class, () ->  red.getConexionTrasbordo(null, estacion2));
 	}
 	
 	@Test
 	@Tag("BlackBox")
-	void testTDDgetConexionTrasbordoExcepcionEstacionNoPertenece1() {
+	void testBlackBoxGetConexionTrasbordoExcepcionEstacionNoPertenece1() {
 		red = new RedMetro(linea1, linea2);
 		assertThrows(IllegalArgumentException.class, () ->  red.getConexionTrasbordo(estacion1, estacion5));
 	}
 	
 	@Test
 	@Tag("BlackBox")
-	void testTDDgetConexionTrasbordoExcepcionEstacionNoPertenece2() {
+	void testBlackBoxGetConexionTrasbordoExcepcionEstacionNoPertenece2() {
 		red = new RedMetro(linea1, linea2);
 		assertThrows(IllegalArgumentException.class, () ->  red.getConexionTrasbordo(estacion5, estacion1));
 	}
 	
 	@Test
 	@Tag("BlackBox")
-	void testTDDgetConexionTrasbordoExcepcionEstacionesIguales() {
+	void testBlackBoxGetConexionTrasbordoExcepcionEstacionesIguales() {
 		red = new RedMetro(linea1, linea2, linea3);
 		assertThrows(IllegalArgumentException.class, () ->  red.getConexionTrasbordo(estacion2, estacion2));
 	}
 	
 	@Test
 	@Tag("BlackBox")
-	void testTDDgetEstacionCercanaExcepcionDistanciaNegativa() {
+	void testBlackBoxGetEstacionCercanaExcepcionDistanciaNegativa() {
 		red = new RedMetro(linea1, linea2, linea3);
 		assertThrows(IllegalArgumentException.class, () ->  red.getEstacionCercana(coordenada1, -100));
 	}
