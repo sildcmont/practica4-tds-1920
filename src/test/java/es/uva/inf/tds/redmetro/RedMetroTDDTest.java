@@ -249,7 +249,21 @@ public class RedMetroTDDTest {
 		
 	}
 	
+	@Test
+	@Tag("TDD")
+	void testTDDgetCorrespondenciaLineasExcepcion() {
+		red = new RedMetro(linea1, linea2, linea3);
+		assertThrows(IllegalArgumentException.class, () ->  red.getCorrespondenciaLineas(linea1, null));
+	}
 	
+	@Test
+	@Tag("TDD")
+	void testTDDgetConexionNoTrasbordo() {
+		red = new RedMetro(linea1, linea2, linea3);
+		Linea[] esperado = {linea1};
+		Linea[] obtenido = {red.getConexionNoTrasbordo(estacion1, estacion2)};
+		assertArrayEquals(esperado, obtenido);
+	}
 	
 	
 }
