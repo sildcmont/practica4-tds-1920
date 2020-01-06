@@ -242,6 +242,11 @@ public class RedMetro {
 		return null;
 	}
 
+	public String getJSON() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 	
 	

@@ -302,4 +302,11 @@ public class RedMetroTDDTest {
 		assertThrows(IllegalArgumentException.class, () ->  red.getEstacionCercana(null, 100));
 	}
 	
+	@Test
+	@Tag("TDD")
+	void testTDDgetJSON() {
+		String jsonEsperado = "";
+		assertEquals(jsonEsperado, red.getJSON());
+	}
+	
 }
