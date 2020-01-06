@@ -137,5 +137,33 @@ public class RedMetroBlackBoxTest {
 		red = new RedMetro(linea1, linea2, linea3);
 		assertThrows(IllegalArgumentException.class, () ->  red.getConexionNoTrasbordo(estacion2, estacion2));
 	}
+	
+	@Test
+	@Tag("BlackBox")
+	void testTDDgetConexionTrasbordoExcepcionNull() {
+		red = new RedMetro(linea1, linea2, linea3);
+		assertThrows(IllegalArgumentException.class, () ->  red.getConexionTrasbordo(null, estacion2));
+	}
+	
+	@Test
+	@Tag("BlackBox")
+	void testTDDgetConexionTrasbordoExcepcionEstacionNoPertenece1() {
+		red = new RedMetro(linea1, linea2);
+		assertThrows(IllegalArgumentException.class, () ->  red.getConexionTrasbordo(estacion1, estacion5));
+	}
+	
+	@Test
+	@Tag("BlackBox")
+	void testTDDgetConexionTrasbordoExcepcionEstacionNoPertenece2() {
+		red = new RedMetro(linea1, linea2);
+		assertThrows(IllegalArgumentException.class, () ->  red.getConexionTrasbordo(estacion5, estacion1));
+	}
+	
+	@Test
+	@Tag("BlackBox")
+	void testTDDgetConexionTrasbordoExcepcionEstacionesIguales() {
+		red = new RedMetro(linea1, linea2, linea3);
+		assertThrows(IllegalArgumentException.class, () ->  red.getConexionTrasbordo(estacion2, estacion2));
+	}
 
 }
