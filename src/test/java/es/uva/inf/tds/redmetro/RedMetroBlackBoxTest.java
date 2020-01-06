@@ -165,5 +165,12 @@ public class RedMetroBlackBoxTest {
 		red = new RedMetro(linea1, linea2, linea3);
 		assertThrows(IllegalArgumentException.class, () ->  red.getConexionTrasbordo(estacion2, estacion2));
 	}
+	
+	@Test
+	@Tag("BlackBox")
+	void testTDDgetEstacionCercanaExcepcionDistanciaNegativa() {
+		red = new RedMetro(linea1, linea2, linea3);
+		assertThrows(IllegalArgumentException.class, () ->  red.getEstacionCercana(coordenada1, -100));
+	}
 
 }
