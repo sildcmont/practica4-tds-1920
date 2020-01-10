@@ -1,7 +1,7 @@
 package es.uva.inf.tds.redmetro;
 
 import java.util.ArrayList;
-import java.util.function.BooleanSupplier;
+
 
 import es.uva.inf.maps.CoordenadasGPS;
 
@@ -160,8 +160,14 @@ public class RedMetro {
 
 	/**
 	 * Consulta las lineas de la red que pasan por una determinada estación
+	 * Si ninguna linea de esa red pasa por la estacion introducida, devuelve una lista vacia
+	 * 
 	 * @param estacion estacion de la que queremos consultar que lineas pasan por ella
 	 * @return lista de lineas que pasan por {@code estacion}
+	 * 
+	 * @pre.condition {@code estacion != null}
+	 * 
+	 * @throw IllegalArgumentException cuando no se cumplen la precondicion
 	 */
 	public ArrayList<Linea> getLineasEstacion(Estacion estacion) {
 		// TODO Auto-generated method stub
@@ -176,8 +182,9 @@ public class RedMetro {
 	 * @param linea2 Segunda linea de la que queremos saber la correspondencia
 	 * @return lista de estaciones en las que se produce la correspondencia 
 	 * 
-	 * @pre.condition {@code lista1 != null}
-	 * @pre.condition {@code lista2 != null}
+	 * @pre.condition {@code linea1 != null}
+	 * @pre.condition {@code linea2 != null}
+	 * @pre.condition {@code linea1 != linea2}
 	 * @pre.condition {@code red.contieneLinea(linea1)}
 	 * @pre.condition {@code red.contieneLinea(linea2)}
 	 * 
@@ -199,7 +206,7 @@ public class RedMetro {
 	 * @pre.condition {@code estacion2 != null}
 	 * @pre.condition {@code estacion1 != estacion2}
 	 * 
-	 * @throws IllegalArgumentExceptio cuando no se cumplen las precondiciones
+	 * @throws IllegalArgumentException cuando no se cumplen las precondiciones
 	 */
 	public Linea getConexionNoTrasbordo(Estacion estacion1, Estacion estacion2) {
 		// TODO Auto-generated method stub
