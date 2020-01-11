@@ -1,6 +1,10 @@
 package es.uva.inf.tds.redmetro;
 
 import java.util.ArrayList;
+
+import org.objenesis.instantiator.gcj.GCJSerializationInstantiator;
+
+import com.google.gson.*;
 import es.uva.inf.maps.CoordenadasGPS;
 
 /**
@@ -47,8 +51,10 @@ public class RedMetro {
 	 * 
 	 * @throws IllegalArgumentException cuando no se cumple la precondición
 	 */
-	public RedMetro(String json) {
-		// TODO Auto-generated constructor stub
+	public RedMetro RedMetro(String json) {
+		Gson gson = new Gson();
+		RedMetro red = gson.fromJson(json, RedMetro.class);
+		return red;
 	}
 
 	/**
@@ -353,8 +359,7 @@ public class RedMetro {
 	 * @return json que representa la red de metro
 	 */
 	public String getJSON() {
-		// TODO Auto-generated method stub
-		return "fake imp";
+		return new Gson().toJson(this);
 	}
 
 	
