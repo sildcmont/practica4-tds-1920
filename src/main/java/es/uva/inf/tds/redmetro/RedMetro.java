@@ -1,9 +1,6 @@
 package es.uva.inf.tds.redmetro;
 
 import java.util.ArrayList;
-
-import org.objenesis.instantiator.gcj.GCJSerializationInstantiator;
-
 import com.google.gson.*;
 import es.uva.inf.maps.CoordenadasGPS;
 
