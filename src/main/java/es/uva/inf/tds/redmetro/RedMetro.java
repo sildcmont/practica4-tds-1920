@@ -300,15 +300,25 @@ public class RedMetro {
 		if(estacion1.getNombre() == estacion2.getNombre()) throw new IllegalArgumentException();
 		boolean contiene1 = false;
 		boolean contiene2 = false;
-		
 		for(Linea l : lineasGeneral) {
 			if (l.contieneEstacion(estacion1)) contiene1 = true;
 			if (l.contieneEstacion(estacion2)) contiene2 = true;
-			//if(l.contieneEstacion(estacion1) && l.contieneEstacion(estacion2))
-			
 		}
 		if(contiene1==false || contiene2 == false) throw new IllegalArgumentException();
-		return new ArrayList<Linea>();
+		
+		ArrayList<Linea> listaTrasbordo = new ArrayList<>();
+		
+		for(Linea l1 : lineasGeneral) {
+			for(Linea l2 : lineasGeneral) {
+				if(l1.contieneEstacion(estacion1) && l2.contieneEstacion(estacion2) && getCorrespondenciaLineas(l1,l2).length>0) {
+					listaTrasbordo.add(l1);
+					listaTrasbordo.add(l2);
+				}
+			}
+		}
+		
+		
+		return listaTrasbordo;
 	}
 
 	/**
@@ -323,8 +333,19 @@ public class RedMetro {
 	 * @throws IllegalArgumentException cuando no se cumplen las precondiciones
 	 */
 	public ArrayList<Estacion> getEstacionCercana(CoordenadasGPS coordenada, int i) {
-		// TODO Auto-generated method stub
-		return new ArrayList<Estacion>();
+		if(i<0) throw new IllegalArgumentException();
+		if(coordenada == null) throw new IllegalArgumentException();
+		
+		ArrayList<Estacion> estacionesCercanas = new ArrayList<Estacion>();
+		for(Linea l : lineasGeneral) {
+			for(Estacion e : l.getEstaciones(true)) {
+				for(CoordenadasGPS c : e.getCoordenadasGPS()) {
+					if(c.getDistanciaA(coordenada)<=i) estacionesCercanas.add(e);
+				}
+				
+			}
+		}
+		return estacionesCercanas;
 	}
 
 	/**
