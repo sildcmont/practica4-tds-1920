@@ -51,10 +51,18 @@ public class RedMetro {
 	 * 
 	 * @throws IllegalArgumentException cuando no se cumple la precondición
 	 */
-	public RedMetro RedMetro(String json) {
+	public RedMetro(String json) {
+		if(json == null) throw new IllegalArgumentException();
 		Gson gson = new Gson();
-		RedMetro red = gson.fromJson(json, RedMetro.class);
-		return red;
+		Linea[] lineas = gson.fromJson(json, Linea[].class);
+		
+		lineasGeneral = new ArrayList<>();
+		lineasRetiradas = new ArrayList<>();
+		lineasEliminadas = new ArrayList<>();
+		
+		for(Linea l : lineas) {
+			lineasGeneral.add(l);
+		}
 	}
 
 	/**
