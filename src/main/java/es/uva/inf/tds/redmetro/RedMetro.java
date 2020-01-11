@@ -1,8 +1,6 @@
 package es.uva.inf.tds.redmetro;
 
 import java.util.ArrayList;
-
-
 import es.uva.inf.maps.CoordenadasGPS;
 
 /**
@@ -14,6 +12,10 @@ import es.uva.inf.maps.CoordenadasGPS;
 
 public class RedMetro {
 	
+	private ArrayList<Linea> lineasGeneral;
+	private ArrayList<Linea> lineasRetiradas;
+	private ArrayList<Linea> lineasEliminadas;
+	
 	/**
 	 * Crea un objeto que representa a una red de metro que contiene varias líneas.
 	 * 
@@ -24,7 +26,16 @@ public class RedMetro {
 	 * @throws IllegalArgumentException cuando no se cumple la precondicion
 	 */
 	public RedMetro(Linea...lineas) {
-		// TODO Auto-generated constructor stub
+		if(lineas == null) throw new IllegalArgumentException();
+		
+		lineasGeneral = new ArrayList<>();
+		lineasRetiradas = new ArrayList<>();
+		lineasEliminadas = new ArrayList<>();
+		
+		for(int i=0; i<lineas.length; i++) {
+			if(lineas[i] == null) throw new IllegalArgumentException();
+			lineasGeneral.add(lineas[i]);
+		}
 	}
 
 	/**
@@ -45,35 +56,40 @@ public class RedMetro {
 	 * @return lista con las lineas de la red
 	 */
 	public ArrayList<Linea> getLineas() {
-		// TODO Auto-generated method stub
-		return new ArrayList<Linea>();
+
+		return lineasGeneral;
 	}
 
 	/**
 	 * Consulta una linea a partir de su número
 	 * @param numLinea numero de la linea que se quiere obtener
-	 * @return linea que se identifica con el numero introducido
+	 * @return linea que se identifica con el numero introducido, null si no hay una linea con ese numero
 	 * 
 	 * @pre.condition {@code numLinea >= 0}
 	 * 
 	 * @throws IllegalArgumentException cuando no se cumple la precondicion
 	 */
 	public Linea getLinea(int numLinea) {
-		// TODO Auto-generated method stub
-		return null;
+		if(numLinea<0) throw new IllegalArgumentException();
+		if(numLinea>lineasGeneral.size()) return null;
+		
+		return lineasGeneral.get(numLinea);
 	}
 
 	/**
 	 * Consulta una linea a partir de su color
 	 * @param color color de la linea que se quiere obtener
-	 * @return linea que se identifica con el color introducido
+	 * @return linea que se identifica con el color introducido, null si no hay una linea con ese color
 	 * 
 	 * @pre.condition {@code color != null}
 	 * 
 	 * @throws IllegalArgumentException cuando no se cumple la precondicion
 	 */
 	public Linea getLinea(String color) {
-		// TODO Auto-generated method stub
+		if(color == null) throw new IllegalArgumentException();
+		for(int i=0; i<lineasGeneral.size(); i++) {
+			if(lineasGeneral.get(i).getColor()==color) return lineasGeneral.get(i);
+		}
 		return null;
 	}
 
@@ -87,8 +103,10 @@ public class RedMetro {
 	 * @throws IllegalArgumentException cuando no se cumple la precondicion
 	 */
 	public boolean isLineaActiva(Linea linea) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean bandera = true;
+		if(lineasRetiradas.contains(linea) || lineasEliminadas.contains(linea)) bandera = false;
+		
+		return bandera;
 	}
 
 	/**
@@ -101,8 +119,8 @@ public class RedMetro {
 	 * @throws IllegalArgumentException cuando no se cumple la precondicion
 	 */
 	public boolean contieneLinea(Linea linea) {
-		// TODO Auto-generated method stub
-		return false;
+		
+		return lineasGeneral.contains(linea);
 	}
 
 	/**
@@ -111,11 +129,16 @@ public class RedMetro {
 	 * 
 	 * @pre.condition {@code !red.contieneLinea(linea))
 	 * @pre.condition {@code linea != null}
+	 * @pre.condition {@code linea.getNumero() == lineasGeneral.size()+1}
 	 * 
 	 * @throws IllegalArgumentException cuando no se cumplen las precondiciones
 	 */
 	public void addLinea(Linea linea) {
-		// TODO Auto-generated method stub
+		if(linea == null) throw new IllegalArgumentException();
+		if(contieneLinea(linea)) throw new IllegalArgumentException();
+		if(linea.getNumero() != lineasGeneral.size()+1) throw new IllegalArgumentException();
+		
+		lineasGeneral.add(linea);
 		
 	}
 
@@ -125,12 +148,16 @@ public class RedMetro {
 	 * 
 	 * @pre.condition {@code red.contieneLinea(linea))
 	 * @pre.condition {@code linea != null}
-	 * @pre.condition {@code red.getNumLineas() >= 3}
+	 * @pre.condition la red debe tener al menos 3 lineas 
 	 * 
 	 * @throws IllegalArgumentException cuando no se cumplen las precondiciones
 	 */
 	public void eliminaLinea(Linea linea) {
-		// TODO Auto-generated method stub
+		if(linea == null) throw new IllegalArgumentException();
+		if(!contieneLinea(linea)) throw new IllegalArgumentException();
+		if(lineasGeneral.size()<3) throw new IllegalArgumentException();
+		
+		lineasEliminadas.add(linea);
 		
 	}
 
@@ -140,12 +167,17 @@ public class RedMetro {
 	 * 
 	 * @pre.condition {@code red.contieneLinea(linea))
 	 * @pre.condition {@code linea != null}
-	 * @pre.condition {@code red.getNumLineas() >= 3}
+	 * @pre.condition la red debe tener al menos 3 lineas
+	 * 
 	 * 
 	 * @throws IllegalArgumentException cuando no se cumplen las precondiciones
 	 */
 	public void retiraLinea(Linea linea) {
-		// TODO Auto-generated method stub
+		if(linea == null) throw new IllegalArgumentException();
+		if(!contieneLinea(linea)) throw new IllegalArgumentException();
+		if(lineasGeneral.size()<3) throw new IllegalArgumentException();
+		
+		lineasRetiradas.add(linea);
 		
 	}
 
@@ -154,8 +186,8 @@ public class RedMetro {
 	 * @return lista de lineas que ya no están en servicio en la red
 	 */
 	public ArrayList<Linea> getLineasRetiradas() {
-		// TODO Auto-generated method stub
-		return new ArrayList<Linea>();
+
+		return lineasRetiradas;
 	}
 
 	/**
@@ -170,8 +202,14 @@ public class RedMetro {
 	 * @throw IllegalArgumentException cuando no se cumplen la precondicion
 	 */
 	public ArrayList<Linea> getLineasEstacion(Estacion estacion) {
-		// TODO Auto-generated method stub
-		return new ArrayList<Linea>();
+		if(estacion == null) throw new IllegalArgumentException();
+		ArrayList<Linea> lineasEstacion = new ArrayList<>();
+		
+		for(Linea l : lineasGeneral) {
+			if(isLineaActiva(l) && l.contieneEstacion(estacion)) lineasEstacion.add(l);
+		}
+		
+		return lineasEstacion;
 	}
 
 	/**
