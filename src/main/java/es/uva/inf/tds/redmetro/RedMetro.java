@@ -229,8 +229,22 @@ public class RedMetro {
 	 * @throws IllegalArgumentException cuando no se cumplen las precondiciones
 	 */
 	public Estacion[] getCorrespondenciaLineas(Linea linea1, Linea linea2) {
-		// TODO Auto-generated method stub
-		return null;
+		if(linea1 == null) throw new IllegalArgumentException();
+		if(linea2 == null) throw new IllegalArgumentException();
+		if(!contieneLinea(linea1)) throw new IllegalArgumentException();
+		if(!contieneLinea(linea2)) throw new IllegalArgumentException();
+		if(linea1.getNumero() == linea2.getNumero()) throw new IllegalArgumentException();
+		
+		ArrayList<Estacion> estacionesCorrespondencia = new ArrayList<>();
+		
+		
+		for(Estacion e1 : linea1.getEstaciones(true)) {
+			for(Estacion e2 : linea2.getEstaciones(true)) {
+				if(e1.getNombre() == e2.getNombre()) estacionesCorrespondencia.add(e1);
+			}
+		}
+		Estacion[] estacionesCorrespond = (Estacion[]) estacionesCorrespondencia.toArray();
+		return estacionesCorrespond;
 	}
 
 	/**
@@ -247,8 +261,22 @@ public class RedMetro {
 	 * @throws IllegalArgumentException cuando no se cumplen las precondiciones
 	 */
 	public Linea getConexionNoTrasbordo(Estacion estacion1, Estacion estacion2) {
-		// TODO Auto-generated method stub
-		return null;
+		if(estacion1 == null) throw new IllegalArgumentException();
+		if(estacion2 == null) throw new IllegalArgumentException();
+		if(estacion1.getNombre() == estacion2.getNombre()) throw new IllegalArgumentException();
+		boolean contiene1 = false;
+		boolean contiene2 = false;
+		Linea lineaCorrespondencia = null;
+		for(Linea l : lineasGeneral) {
+			if (l.contieneEstacion(estacion1)) contiene1 = true;
+			if (l.contieneEstacion(estacion2)) contiene2 = true;
+			if(l.contieneEstacion(estacion1) && l.contieneEstacion(estacion2)) lineaCorrespondencia = l;
+			
+		}
+		if(contiene1==false || contiene2 == false) throw new IllegalArgumentException();
+		
+		
+		return lineaCorrespondencia;
 	}
 
 	/**
@@ -267,7 +295,19 @@ public class RedMetro {
 	 * 
 	 */
 	public ArrayList<Linea> getConexionTrasbordo(Estacion estacion1, Estacion estacion2) {
-		// TODO Auto-generated method stub
+		if(estacion1 == null) throw new IllegalArgumentException();
+		if(estacion2 == null) throw new IllegalArgumentException();
+		if(estacion1.getNombre() == estacion2.getNombre()) throw new IllegalArgumentException();
+		boolean contiene1 = false;
+		boolean contiene2 = false;
+		
+		for(Linea l : lineasGeneral) {
+			if (l.contieneEstacion(estacion1)) contiene1 = true;
+			if (l.contieneEstacion(estacion2)) contiene2 = true;
+			//if(l.contieneEstacion(estacion1) && l.contieneEstacion(estacion2))
+			
+		}
+		if(contiene1==false || contiene2 == false) throw new IllegalArgumentException();
 		return new ArrayList<Linea>();
 	}
 
