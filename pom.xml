@@ -108,11 +108,11 @@
 				<version>2.22.2</version>
 				<configuration>
 					<excludes>
-						<exclude>CoordenadasGPS.java</exclude>
-						<exclude>Linea.java</exclude>
-						<exclude>Estacion.java</exclude>
-						<exclude>RedMetroTDDTest.java</exclude>
-						<exclude>RedMetroBlackBoxTest.java</exclude>
+						<exclude>/CoordenadasGPS.java</exclude>
+						<exclude>/Linea.java</exclude>
+						<exclude>/Estacion.java</exclude>
+						<exclude>/RedMetroTDDTest.java</exclude>
+						<exclude>/RedMetroBlackBoxTest.java</exclude>
 					</excludes>
 				</configuration>
 			</plugin>
