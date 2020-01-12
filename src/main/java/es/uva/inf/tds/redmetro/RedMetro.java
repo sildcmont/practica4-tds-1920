@@ -40,28 +40,6 @@ public class RedMetro {
 		}
 	}
 
-	/**
-	 * Crea un objeto que representa a una red de metro con varias lineas a partir de un json
-	 * 
-	 * @param json
-	 * 
-	 * @pre.condition {@code json != null}
-	 * 
-	 * @throws IllegalArgumentException cuando no se cumple la precondición
-	 */
-	public RedMetro(String json) {
-		if(json == null) throw new IllegalArgumentException();
-		Gson gson = new Gson();
-		Linea[] lineas = gson.fromJson(json, Linea[].class);
-		
-		lineasGeneral = new ArrayList<>();
-		lineasRetiradas = new ArrayList<>();
-		lineasEliminadas = new ArrayList<>();
-		
-		for(Linea l : lineas) {
-			lineasGeneral.add(l);
-		}
-	}
 
 	/**
 	 * Consulta las lineas que contiene la red de metro.
@@ -364,14 +342,6 @@ public class RedMetro {
 			}
 		}
 		return bandera;
-	}
-
-	/**
-	 * Obtiene toda la información de una red de metro en formato JSON
-	 * @return json que representa la red de metro
-	 */
-	public String getJSON() {
-		return new Gson().toJson(this);
 	}
 
 	

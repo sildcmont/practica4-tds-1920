@@ -284,90 +284,6 @@ public class RedMetroTDDIsolationTest {
 		
 	}
 	
-	@Test
-	@Tag("TDD")
-	@Tag("Isolation")
-	void testTDDConstructorJSON() throws FileNotFoundException {
-//		String json = "{\n" + 
-//				"	\"lineas\":[\n" + 
-//				"		{\"numero\": \"1\",\n" + 
-//				"		\"color\": \"rojo\",\n" + 
-//				"		\"estaciones\":[\n" + 
-//				"			{\"nombre\":\"Estacion1\",\n" + 
-//				"			 \"latitud\":\"034°30'06\\\" N\",\n" + 
-//				"			 \"longitud\":\"100°05'59\\\" E\"},\n" + 
-//				"			 {\"nombre\":\"Estacion3\",\n" + 
-//				"			 \"latitud\":\"037°30'06\\\" N\",\n" + 
-//				"			 \"longitud\":\"120°05'59\\\" E\"}\n" + 
-//				"		]},\n" + 
-//				"		{\"numero\": \"2\",\n" + 
-//				"		\"color\": \"azul\",\n" + 
-//				"		\"estaciones\":[\n" + 
-//				"			{\"nombre\":\"Estacion2\",\n" + 
-//				"			 \"latitud\":\"175°38'06\\\" S\",\n" + 
-//				"			 \"longitud\":\"60°05'59 \\\"E\"},\n" + 
-//				"			 {\"nombre\":\"Estacion4\",\n" + 
-//				"			 \"latitud\":\"038°30'06\\\" N\",\n" + 
-//				"			 \"longitud\":\"130°05'59\\\" E\"}\n" + 
-//				"		]}\n" + 
-//				"	]\n" + 
-//				"}";
-//
-//		RedMetro red = new RedMetro(json);
-//		Linea[] esperado = {linea1Mock, linea2Mock};
-//		assertArrayEquals(esperado, red.getLineas().toArray());
-		
-	}
-	
-	/**
-	 * Read plain text file
-	 * 
-	 * @param file
-	 *            File to read
-	 * @return a String array without the null values of the file
-	 */
-	private static String[] readFile(String filePath) {
-		File file = new File(filePath);
-		FileReader fr = null;
-		BufferedReader reader = null;
-		String txt[] = new String[(int) file.length()];
-		try {
-			fr = new FileReader(file);
-			reader = new BufferedReader(fr);
-			for (int i = 0; i < txt.length; i++) {
-				txt[i] = reader.readLine();
-			}
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-			if (fr != null && reader != null) {
-				try {
-					fr.close();
-					reader.close();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-		}
-		return txt = Arrays.stream(txt)
-				.filter(s -> (s != null && s.length() > 0))
-				.toArray(String[]::new);
-	}
-	
-	@Test
-	@Tag("TDD")
-	@Tag("Isolation")
-	void testTDDConstructorJSONNull() {
-		String json = null;
-		assertThrows(IllegalArgumentException.class, () ->  red = new RedMetro(json));
-		
-	}
-	
 	
 	@Test
 	@Tag("TDD")
@@ -590,14 +506,5 @@ public class RedMetroTDDIsolationTest {
 		assertThrows(IllegalArgumentException.class, () ->  red.getEstacionCercana(null, 100));
 	}
 	
-	@Test
-	@Tag("TDD")
-	@Tag("Isolation")
-	void testTDDgetJSON() {
-//		red = new RedMetro(linea1Mock, linea2Mock, linea3Mock);
-//		String jsonEsperado = "";
-//		System.out.println(red.getJSON());
-//		assertEquals(jsonEsperado, red.getJSON());
-	}
 	
 }
