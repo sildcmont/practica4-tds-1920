@@ -2,224 +2,298 @@ package es.uva.inf.tds.redmetro;
 
 import es.uva.inf.maps.*;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
 
 public class RedMetroBlackBoxIsolationTest {
 	
 	private RedMetro red;
-	private CoordenadasGPS coordenada1, coordenada2, coordenada3, coordenada4, coordenada5, coordenada6, coordenada7, coordenada8, coordenada9, coordenada10, coordenada11, coordenada12;
-	private Estacion estacion1, estacion2, estacion3, estacion4, estacion5, estacion6;
-	private Linea linea1, linea2, linea3;
+	
+	
+	@Mock
+	private CoordenadasGPS coordenada1Mock, coordenada2Mock, coordenada3Mock, coordenada4Mock, coordenada5Mock, coordenada6Mock, coordenada7Mock, coordenada8Mock, coordenada9Mock, coordenada10Mock, coordenada11Mock, coordenada12Mock;
+	private Estacion estacion1Mock, estacion2Mock, estacion3Mock, estacion4Mock, estacion5Mock, estacion6Mock;
+	private Linea linea1Mock, linea2Mock, linea3Mock;
+
 	
 	@BeforeEach
 	void setUp() {
-		coordenada1 = new CoordenadasGPS("041°38'06\"N","135°05'59\"E");
-		coordenada2 = new CoordenadasGPS("056°45'43\"S","059°45'00\"W");
-		estacion1 = new Estacion("estacion1", coordenada1, coordenada2);
+		coordenada1Mock = mock(CoordenadasGPS.class);
+		when(coordenada1Mock.getLatitudGMS()).thenReturn("041°38'06\"N");
+		when(coordenada1Mock.getLongitudGMS()).thenReturn("135°05'59\"E");
+		coordenada2Mock = mock(CoordenadasGPS.class);
+		when(coordenada2Mock.getLatitudGMS()).thenReturn("056°45'43\"S");
+		when(coordenada2Mock.getLongitudGMS()).thenReturn("059°45'00\"W");
 		
-		coordenada3 = new CoordenadasGPS("007°28'35\"N","007°28'35\"E");
-		coordenada4 = new CoordenadasGPS("000º00'00\"N","000º00'00\"E");
-		estacion2 = new Estacion("estacion2", coordenada3, coordenada4);
+		estacion1Mock = mock(Estacion.class);
+		when(estacion1Mock.getNombre()).thenReturn("estacion1");
+		CoordenadasGPS[] estacion1coord = {coordenada1Mock, coordenada2Mock};
+		when(estacion1Mock.getCoordenadasGPS()).thenReturn(estacion1coord);
 		
-		linea1 = new Linea(1, "rojo", estacion1, estacion2);
 		
-		coordenada5 = new CoordenadasGPS("041°38'06\"S","135°05'59\"W");
-		coordenada6 = new CoordenadasGPS("034°30'06\"N","100°05'59\"E");
-		estacion3 = new Estacion("estacion3", coordenada5, coordenada6);
 		
-		coordenada7 = new CoordenadasGPS("175°38'06\"S","60°05'59\"E");
-		coordenada8 = new CoordenadasGPS("141°38'06\"N","35°05'59\"W");
-		estacion4 = new Estacion("estacion4", coordenada7, coordenada8);
+		coordenada3Mock = mock(CoordenadasGPS.class);
+		when(coordenada3Mock.getLatitudGMS()).thenReturn("007°28'35\"N");
+		when(coordenada3Mock.getLongitudGMS()).thenReturn("007°28'35\"E");
+		coordenada4Mock = mock(CoordenadasGPS.class);
+		when(coordenada4Mock.getLatitudGMS()).thenReturn("000º00'00\"N");
+		when(coordenada4Mock.getLongitudGMS()).thenReturn("000º00'00\"E");
 		
-		linea2 = new Linea(2, "azul", estacion3, estacion4);
+		estacion2Mock = mock(Estacion.class);
+		when(estacion2Mock.getNombre()).thenReturn("estacion2");
+		CoordenadasGPS[] estacion2coord = {coordenada3Mock, coordenada4Mock};
+		when(estacion2Mock.getCoordenadasGPS()).thenReturn(estacion2coord);
 		
-		coordenada9 = new CoordenadasGPS("041°10'06\"N","135°08'59\"W");
-		coordenada10 = new CoordenadasGPS("126°45'43\"S","066°45'00\"W");
-		estacion5 = new Estacion("estacion5", coordenada9, coordenada10);
-		coordenada11 = new CoordenadasGPS("007°28'35\"N","107°28'35\"E");
-		coordenada12 = new CoordenadasGPS("001º01'01\"N","000º00'03\"E");
-		estacion6 = new Estacion("estacion6", coordenada11, coordenada12);
-		linea3 = new Linea(3, "verde", estacion5, estacion6, estacion1);
+		linea1Mock = mock(Linea.class);
+		when(linea1Mock.getNumero()).thenReturn(1);
+		when(linea1Mock.getColor()).thenReturn("rojo");
+		Estacion[] estacionesLinea1 = {estacion1Mock, estacion2Mock};
+		when(linea1Mock.getEstaciones(true)).thenReturn(estacionesLinea1);
+		when(linea1Mock.contieneEstacion(estacion1Mock)).thenReturn(true);
+		when(linea1Mock.contieneEstacion(estacion2Mock)).thenReturn(true);
+		when(linea1Mock.contieneEstacion(estacion3Mock)).thenReturn(false);
+		when(linea1Mock.contieneEstacion(estacion4Mock)).thenReturn(false);
+		when(linea1Mock.contieneEstacion(estacion5Mock)).thenReturn(false);
+		when(linea1Mock.contieneEstacion(estacion6Mock)).thenReturn(false);
+		when(linea1Mock.hayCorrespondencia(linea3Mock)).thenReturn(true);
+		when(linea1Mock.hayCorrespondencia(linea2Mock)).thenReturn(false);
+		when(linea1Mock.hayCorrespondencia(linea1Mock)).thenReturn(false);
+		
+		
+		coordenada5Mock = mock(CoordenadasGPS.class);
+		when(coordenada5Mock.getLatitudGMS()).thenReturn("041°38'06\"S");
+		when(coordenada5Mock.getLongitudGMS()).thenReturn("135°05'59\"W");
+		coordenada6Mock = mock(CoordenadasGPS.class);
+		when(coordenada6Mock.getLatitudGMS()).thenReturn("034°30'06\"N");
+		when(coordenada6Mock.getLongitudGMS()).thenReturn("100°05'59\"E");
+		
+		estacion3Mock = mock(Estacion.class);
+		when(estacion3Mock.getNombre()).thenReturn("estacion3");
+		CoordenadasGPS[] estacion3coord = {coordenada5Mock, coordenada6Mock};
+		when(estacion3Mock.getCoordenadasGPS()).thenReturn(estacion3coord);
+		
+		
+		coordenada7Mock = mock(CoordenadasGPS.class);
+		when(coordenada7Mock.getLatitudGMS()).thenReturn("175°38'06\"S");
+		when(coordenada7Mock.getLongitudGMS()).thenReturn("60°05'59\"E");
+		coordenada8Mock = mock(CoordenadasGPS.class);
+		when(coordenada8Mock.getLatitudGMS()).thenReturn("141°38'06\"N");
+		when(coordenada8Mock.getLongitudGMS()).thenReturn("35°05'59\"W");
+		
+		estacion4Mock = mock(Estacion.class);
+		when(estacion4Mock.getNombre()).thenReturn("estacion4");
+		CoordenadasGPS[] estacion4coord = {coordenada7Mock, coordenada8Mock};
+		when(estacion4Mock.getCoordenadasGPS()).thenReturn(estacion4coord);
+		
+		
+		linea2Mock = mock(Linea.class);
+		when(linea2Mock.getNumero()).thenReturn(2);
+		when(linea2Mock.getColor()).thenReturn("azul");
+		Estacion[] estacionesLinea2 = {estacion3Mock, estacion4Mock};
+		when(linea2Mock.getEstaciones(true)).thenReturn(estacionesLinea2);
+		when(linea2Mock.getEstaciones(true)).thenReturn(estacionesLinea1);
+		when(linea2Mock.contieneEstacion(estacion1Mock)).thenReturn(false);
+		when(linea2Mock.contieneEstacion(estacion2Mock)).thenReturn(false);
+		when(linea2Mock.contieneEstacion(estacion3Mock)).thenReturn(true);
+		when(linea2Mock.contieneEstacion(estacion4Mock)).thenReturn(true);
+		when(linea2Mock.contieneEstacion(estacion5Mock)).thenReturn(false);
+		when(linea2Mock.contieneEstacion(estacion6Mock)).thenReturn(false);
+		when(linea2Mock.hayCorrespondencia(linea3Mock)).thenReturn(false);
+		when(linea2Mock.hayCorrespondencia(linea2Mock)).thenReturn(false);
+		when(linea2Mock.hayCorrespondencia(linea1Mock)).thenReturn(false);
+		
+		coordenada9Mock = mock(CoordenadasGPS.class);
+		when(coordenada9Mock.getLatitudGMS()).thenReturn("041°10'06\"N");
+		when(coordenada9Mock.getLongitudGMS()).thenReturn("135°08'59\"W");
+		coordenada10Mock = mock(CoordenadasGPS.class);
+		when(coordenada10Mock.getLatitudGMS()).thenReturn("126°45'43\"S");
+		when(coordenada10Mock.getLongitudGMS()).thenReturn("066°45'00\"W");
+		
+		estacion5Mock = mock(Estacion.class);
+		when(estacion5Mock.getNombre()).thenReturn("estacion5");
+		CoordenadasGPS[] estacion5coord = {coordenada9Mock, coordenada10Mock};
+		when(estacion5Mock.getCoordenadasGPS()).thenReturn(estacion5coord);
+		
+		
+		coordenada11Mock = mock(CoordenadasGPS.class);
+		when(coordenada11Mock.getLatitudGMS()).thenReturn("007°28'35\"N");
+		when(coordenada11Mock.getLongitudGMS()).thenReturn("107°28'35\"E");
+		coordenada12Mock = mock(CoordenadasGPS.class);
+		when(coordenada12Mock.getLatitudGMS()).thenReturn("001º01'01\"N");
+		when(coordenada12Mock.getLongitudGMS()).thenReturn("000º00'03\"E");
+		
+		estacion6Mock = mock(Estacion.class);
+		when(estacion6Mock.getNombre()).thenReturn("estacion6");
+		CoordenadasGPS[] estacion6coord = {coordenada11Mock, coordenada12Mock};
+		when(estacion6Mock.getCoordenadasGPS()).thenReturn(estacion6coord);
+		
+		
+		linea3Mock = mock(Linea.class);
+		when(linea3Mock.getNumero()).thenReturn(3);
+		when(linea3Mock.getColor()).thenReturn("verde");
+		Estacion[] estacionesLinea3 = {estacion1Mock, estacion5Mock, estacion6Mock};
+		when(linea3Mock.getEstaciones(true)).thenReturn(estacionesLinea3);
+		when(linea3Mock.contieneEstacion(estacion1Mock)).thenReturn(true);
+		when(linea3Mock.contieneEstacion(estacion2Mock)).thenReturn(false);
+		when(linea3Mock.contieneEstacion(estacion3Mock)).thenReturn(false);
+		when(linea3Mock.contieneEstacion(estacion4Mock)).thenReturn(false);
+		when(linea3Mock.contieneEstacion(estacion5Mock)).thenReturn(true);
+		when(linea3Mock.contieneEstacion(estacion6Mock)).thenReturn(true);
+		when(linea3Mock.hayCorrespondencia(linea3Mock)).thenReturn(false);
+		when(linea3Mock.hayCorrespondencia(linea2Mock)).thenReturn(false);
+		when(linea3Mock.hayCorrespondencia(linea1Mock)).thenReturn(true);
 		
 	}
 	
-	@AfterEach
-	void tearDown() {
-		coordenada1 = null;
-		coordenada2 = null;
-		estacion1 = null;
-		
-		coordenada3 = null;
-		coordenada4 = null;
-		estacion2 = null;
-		
-		linea1 = null;
-		
-		coordenada5 = null;
-		coordenada6 = null;
-		estacion3 = null;
-		
-		coordenada7 = null;
-		coordenada8 = null;
-		estacion4 = null;
-		
-		linea2 = null;
-		
-		coordenada9 = null;
-		coordenada10 = null;
-		estacion5 = null;
-		coordenada11 = null;
-		coordenada12 = null;
-		estacion6 = null;
-		linea3 = null;
-		
-	}
 	
 	@Test
 	@Tag("BlackBox")
 	@Tag("Isolation")
 	void testBlackBoxAddLineaExcepcionYaEsta() {
-		red = new RedMetro(linea1, linea2);
-		assertThrows(IllegalArgumentException.class, () ->  red.addLinea(linea1));
+		red = new RedMetro(linea1Mock, linea2Mock);
+		assertThrows(IllegalArgumentException.class, () ->  red.addLinea(linea1Mock));
 	}
 	
 	@Test
 	@Tag("BlackBox")
 	@Tag("Isolation")
 	void testBlackBoxEliminaLineaExcepcionNoEsta() {
-		red = new RedMetro(linea1, linea2);
-		assertThrows(IllegalArgumentException.class, () ->  red.eliminaLinea(linea3));
+		red = new RedMetro(linea1Mock, linea2Mock);
+		assertThrows(IllegalArgumentException.class, () ->  red.eliminaLinea(linea3Mock));
 	}
 	
 	@Test
 	@Tag("BlackBox")
 	@Tag("Isolation")
 	void testBlackBoxEliminaLineaExcepcionMinimo() {
-		red = new RedMetro(linea1, linea2);
-		assertThrows(IllegalArgumentException.class, () ->  red.eliminaLinea(linea2));
+		red = new RedMetro(linea1Mock, linea2Mock);
+		assertThrows(IllegalArgumentException.class, () ->  red.eliminaLinea(linea2Mock));
 	}
 	
 	@Test
 	@Tag("BlackBox")
 	@Tag("Isolation")
 	void testBlackBoxRetiraLineaExcepcionNoEsta() {
-		red = new RedMetro(linea1, linea2);
-		assertThrows(IllegalArgumentException.class, () ->  red.retiraLinea(linea3));
+		red = new RedMetro(linea1Mock, linea2Mock);
+		assertThrows(IllegalArgumentException.class, () ->  red.retiraLinea(linea3Mock));
 	}
 	
 	@Test
 	@Tag("BlackBox")
 	@Tag("Isolation")
 	void testBlackBoxRetiraLineaExcepcionMinimo() {
-		red = new RedMetro(linea1, linea2);
-		assertThrows(IllegalArgumentException.class, () ->  red.retiraLinea(linea2));
+		red = new RedMetro(linea1Mock, linea2Mock);
+		assertThrows(IllegalArgumentException.class, () ->  red.retiraLinea(linea2Mock));
 	}
 	
 	@Test
 	@Tag("BlackBox")
 	@Tag("Isolation")
 	void testBlackBoxGetCorrespondenciaLineasExcepcionNull() {
-		red = new RedMetro(linea1, linea2, linea3);
-		assertThrows(IllegalArgumentException.class, () ->  red.getCorrespondenciaLineas(null, linea2));
+		red = new RedMetro(linea1Mock, linea2Mock, linea3Mock);
+		assertThrows(IllegalArgumentException.class, () ->  red.getCorrespondenciaLineas(null, linea2Mock));
 	}
 	
 	@Test
 	@Tag("BlackBox")
 	@Tag("Isolation")
 	void testBlackBoxGetCorrespondenciaLineasExcepcionLinea1NoEsta() {
-		red = new RedMetro(linea2, linea3);
-		assertThrows(IllegalArgumentException.class, () ->  red.getCorrespondenciaLineas(linea1, linea2));
+		red = new RedMetro(linea2Mock, linea3Mock);
+		assertThrows(IllegalArgumentException.class, () ->  red.getCorrespondenciaLineas(linea1Mock, linea2Mock));
 	}
 	
 	@Test
 	@Tag("BlackBox")
 	@Tag("Isolation")
 	void testBlackBoxGetCorrespondenciaLineasExcepcionLinea2NoEsta() {
-		red = new RedMetro(linea1, linea3);
-		assertThrows(IllegalArgumentException.class, () ->  red.getCorrespondenciaLineas(linea1, linea2));
+		red = new RedMetro(linea1Mock, linea3Mock);
+		assertThrows(IllegalArgumentException.class, () ->  red.getCorrespondenciaLineas(linea1Mock, linea2Mock));
 	}
 	
 	@Test
 	@Tag("BlackBox")
 	@Tag("Isolation")
 	void testBlackBoxGetCorrespondenciaLineasExcepcionLineasIguales() {
-		red = new RedMetro(linea1, linea2, linea3);
-		assertThrows(IllegalArgumentException.class, () ->  red.getCorrespondenciaLineas(linea1, linea1));
+		red = new RedMetro(linea1Mock, linea2Mock, linea3Mock);
+		assertThrows(IllegalArgumentException.class, () ->  red.getCorrespondenciaLineas(linea1Mock, linea1Mock));
 	}
 	
 	@Test
 	@Tag("BlackBox")
 	@Tag("Isolation")
 	void testBlackBoxGetConexionNoTrasbordoExcepcionNull() {
-		red = new RedMetro(linea1, linea2, linea3);
-		assertThrows(IllegalArgumentException.class, () ->  red.getConexionNoTrasbordo(null, estacion2));
+		red = new RedMetro(linea1Mock, linea2Mock, linea3Mock);
+		assertThrows(IllegalArgumentException.class, () ->  red.getConexionNoTrasbordo(null, estacion2Mock));
 	}
 	
 	@Test
 	@Tag("BlackBox")
 	@Tag("Isolation")
 	void testBlackBoxGetConexionNoTrasbordoExcepcionEstacionNoPertenece1() {
-		red = new RedMetro(linea1, linea2);
-		assertThrows(IllegalArgumentException.class, () ->  red.getConexionNoTrasbordo(estacion1, estacion5));
+		red = new RedMetro(linea1Mock, linea2Mock);
+		assertThrows(IllegalArgumentException.class, () ->  red.getConexionNoTrasbordo(estacion1Mock, estacion5Mock));
 	}
 	
 	@Test
 	@Tag("BlackBox")
 	@Tag("Isolation")
 	void testBlackBoxGetConexionNoTrasbordoExcepcionEstacionNoPertenece2() {
-		red = new RedMetro(linea1, linea2);
-		assertThrows(IllegalArgumentException.class, () ->  red.getConexionNoTrasbordo(estacion5, estacion1));
+		red = new RedMetro(linea1Mock, linea2Mock);
+		assertThrows(IllegalArgumentException.class, () ->  red.getConexionNoTrasbordo(estacion5Mock, estacion1Mock));
 	}
 	
 	@Test
 	@Tag("BlackBox")
 	@Tag("Isolation")
 	void testBlackBoxGetConexionNoTrasbordoExcepcionEstacionesIguales() {
-		red = new RedMetro(linea1, linea2, linea3);
-		assertThrows(IllegalArgumentException.class, () ->  red.getConexionNoTrasbordo(estacion2, estacion2));
+		red = new RedMetro(linea1Mock, linea2Mock, linea3Mock);
+		assertThrows(IllegalArgumentException.class, () ->  red.getConexionNoTrasbordo(estacion2Mock, estacion2Mock));
 	}
 	
 	@Test
 	@Tag("BlackBox")
 	@Tag("Isolation")
 	void testBlackBoxGetConexionTrasbordoExcepcionNull() {
-		red = new RedMetro(linea1, linea2, linea3);
-		assertThrows(IllegalArgumentException.class, () ->  red.getConexionTrasbordo(null, estacion2));
+		red = new RedMetro(linea1Mock, linea2Mock, linea3Mock);
+		assertThrows(IllegalArgumentException.class, () ->  red.getConexionTrasbordo(null, estacion2Mock));
 	}
 	
 	@Test
 	@Tag("BlackBox")
 	@Tag("Isolation")
 	void testBlackBoxGetConexionTrasbordoExcepcionEstacionNoPertenece1() {
-		red = new RedMetro(linea1, linea2);
-		assertThrows(IllegalArgumentException.class, () ->  red.getConexionTrasbordo(estacion1, estacion5));
+		red = new RedMetro(linea1Mock, linea2Mock);
+		assertThrows(IllegalArgumentException.class, () ->  red.getConexionTrasbordo(estacion1Mock, estacion5Mock));
 	}
 	
 	@Test
 	@Tag("BlackBox")
 	@Tag("Isolation")
 	void testBlackBoxGetConexionTrasbordoExcepcionEstacionNoPertenece2() {
-		red = new RedMetro(linea1, linea2);
-		assertThrows(IllegalArgumentException.class, () ->  red.getConexionTrasbordo(estacion5, estacion1));
+		red = new RedMetro(linea1Mock, linea2Mock);
+		assertThrows(IllegalArgumentException.class, () ->  red.getConexionTrasbordo(estacion5Mock, estacion1Mock));
 	}
 	
 	@Test
 	@Tag("BlackBox")
 	@Tag("Isolation")
 	void testBlackBoxGetConexionTrasbordoExcepcionEstacionesIguales() {
-		red = new RedMetro(linea1, linea2, linea3);
-		assertThrows(IllegalArgumentException.class, () ->  red.getConexionTrasbordo(estacion2, estacion2));
+		red = new RedMetro(linea1Mock, linea2Mock, linea3Mock);
+		assertThrows(IllegalArgumentException.class, () ->  red.getConexionTrasbordo(estacion2Mock, estacion2Mock));
 	}
 	
 	@Test
 	@Tag("BlackBox")
 	@Tag("Isolation")
 	void testBlackBoxGetEstacionCercanaExcepcionDistanciaNegativa() {
-		red = new RedMetro(linea1, linea2, linea3);
-		assertThrows(IllegalArgumentException.class, () ->  red.getEstacionCercana(coordenada1, -100));
+		red = new RedMetro(linea1Mock, linea2Mock, linea3Mock);
+		assertThrows(IllegalArgumentException.class, () ->  red.getEstacionCercana(coordenada1Mock, -100));
 	}
 
 }
