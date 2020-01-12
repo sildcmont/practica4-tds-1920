@@ -1,9 +1,7 @@
 package es.uva.inf.tds.redmetro;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-
 import com.google.gson.*;
 import es.uva.inf.maps.CoordenadasGPS;
 
@@ -53,7 +51,6 @@ public class RedMetro {
 	 */
 	public RedMetro(String json) {
 		if(json == null) throw new IllegalArgumentException();
-		
 		Gson gson = new Gson();
 		Linea[] lineas = gson.fromJson(json, Linea[].class);
 		
@@ -70,7 +67,7 @@ public class RedMetro {
 	 * Consulta las lineas que contiene la red de metro.
 	 * @return lista con las lineas de la red
 	 */
-	public ArrayList<Linea> getLineas() {
+	public List<Linea> getLineas() {
 		ArrayList<Linea> lineasActivas = new ArrayList<>();
 		for(Linea l : lineasGeneral) {
 			if(isLineaActiva(l)) lineasActivas.add(l);
@@ -204,7 +201,7 @@ public class RedMetro {
 	 * Consulta las lineas que han sido retiradas del servicio en la red de metro 
 	 * @return lista de lineas que ya no están en servicio en la red
 	 */
-	public ArrayList<Linea> getLineasRetiradas() {
+	public List<Linea> getLineasRetiradas() {
 
 		return lineasRetiradas;
 	}
@@ -220,7 +217,7 @@ public class RedMetro {
 	 * 
 	 * @throw IllegalArgumentException cuando no se cumplen la precondicion
 	 */
-	public ArrayList<Linea> getLineasEstacion(Estacion estacion) {
+	public List<Linea> getLineasEstacion(Estacion estacion) {
 		if(estacion == null) throw new IllegalArgumentException();
 		ArrayList<Linea> lineasEstacion = new ArrayList<>();
 		
@@ -247,7 +244,7 @@ public class RedMetro {
 	 * 
 	 * @throws IllegalArgumentException cuando no se cumplen las precondiciones
 	 */
-	public ArrayList<Estacion> getCorrespondenciaLineas(Linea linea1, Linea linea2) {
+	public List<Estacion> getCorrespondenciaLineas(Linea linea1, Linea linea2) {
 		if(linea1 == null) throw new IllegalArgumentException();
 		if(linea2 == null) throw new IllegalArgumentException();
 		if(!contieneLinea(linea1)) throw new IllegalArgumentException();
@@ -292,7 +289,7 @@ public class RedMetro {
 			if(l.contieneEstacion(estacion1) && l.contieneEstacion(estacion2)) lineaCorrespondencia = l;
 			
 		}
-		if(contiene1==false || contiene2 == false) throw new IllegalArgumentException();
+		if(!contiene1|| !contiene2) throw new IllegalArgumentException();
 		
 		
 		return lineaCorrespondencia;
@@ -323,7 +320,9 @@ public class RedMetro {
 			if (l.contieneEstacion(estacion1)) contiene1 = true;
 			if (l.contieneEstacion(estacion2)) contiene2 = true;
 		}
+		
 		if(!contiene1 || !contiene2) throw new IllegalArgumentException();
+	
 		
 		ArrayList<Linea> listaTrasbordo = new ArrayList<>();
 		
@@ -355,7 +354,7 @@ public class RedMetro {
 		if(i<0) throw new IllegalArgumentException();
 		if(coordenada == null) throw new IllegalArgumentException();
 		boolean bandera = false;
-		ArrayList<Estacion> estacionesCercanas = new ArrayList<Estacion>();
+		ArrayList<Estacion> estacionesCercanas = new ArrayList<>();
 		for(Linea l : lineasGeneral) {
 			for(Estacion e : l.getEstaciones(true)) {
 				for(CoordenadasGPS c : e.getCoordenadasGPS()) {
