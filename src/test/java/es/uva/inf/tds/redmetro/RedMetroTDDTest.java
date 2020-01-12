@@ -284,7 +284,7 @@ public class RedMetroTDDTest {
 	void testTDDgetCorrespondenciaLineas() {
 		red = new RedMetro(linea1, linea2, linea3);
 		Estacion[] esperado = {estacion1};
-		assertArrayEquals(esperado, red.getCorrespondenciaLineas(linea1, linea3));
+		assertArrayEquals(esperado, red.getCorrespondenciaLineas(linea1, linea3).toArray());
 		
 	}
 	
@@ -330,8 +330,7 @@ public class RedMetroTDDTest {
 	@Tag("TDD")
 	void testTDDgetEstacionCercana() {
 		red = new RedMetro(linea1, linea2, linea3);
-		Estacion[] esperado = {estacion1};
-		assertArrayEquals(esperado, red.getEstacionCercana(coordenada1, 100).toArray());
+		assertTrue(red.getEstacionCercana(coordenada1, 100));
 		}
 	
 	@Test
