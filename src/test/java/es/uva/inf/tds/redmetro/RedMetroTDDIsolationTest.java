@@ -7,6 +7,10 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
 
 /**
  * Clase de test TDD que prueba la clase RedMetro
@@ -20,17 +24,49 @@ public class RedMetroTDDIsolationTest {
 	private Estacion estacion1, estacion2, estacion3, estacion4, estacion5, estacion6;
 	private Linea linea1, linea2, linea3;
 	
+	@Mock
+	private CoordenadasGPS coordenada1Mock, coordenada2Mock, coordenada3Mock, coordenada4Mock, coordenada5Mock, coordenada6Mock, coordenada7Mock, coordenada8Mock, coordenada9Mock, coordenada10Mock, coordenada11Mock, coordenada12Mock;
+	private Estacion estacion1Mock, estacion2Mock, estacion3Mock, estacion4Mock, estacion5Mock, estacion6Mock;
+	private Linea linea1Mock, linea2Mock, linea3Mock;
+
+	
 	@BeforeEach
 	void setUp() {
-		coordenada1 = new CoordenadasGPS("041°38'06\"N","135°05'59\"E");
-		coordenada2 = new CoordenadasGPS("056°45'43\"S","059°45'00\"W");
-		estacion1 = new Estacion("estacion1", coordenada1, coordenada2);
+		coordenada1Mock = mock(CoordenadasGPS.class);
+		when(coordenada1Mock.getLatitudGMS()).thenReturn("041°38'06\"N");
+		when(coordenada1Mock.getLongitudGMS()).thenReturn("135°05'59\"E");
+		coordenada2Mock = mock(CoordenadasGPS.class);
+		when(coordenada2Mock.getLatitudGMS()).thenReturn("056°45'43\"S");
+		when(coordenada2Mock.getLongitudGMS()).thenReturn("059°45'00\"W");
+		
+		estacion1Mock = mock(Estacion.class);
+		when(estacion1Mock.getNombre()).thenReturn("estacion1");
+		CoordenadasGPS[] estacion1coord = {coordenada1Mock, coordenada2Mock};
+		when(estacion1Mock.getCoordenadasGPS()).thenReturn(estacion1coord);
+		
 		
 		coordenada3 = new CoordenadasGPS("007°28'35\"N","007°28'35\"E");
 		coordenada4 = new CoordenadasGPS("000º00'00\"N","000º00'00\"E");
 		estacion2 = new Estacion("estacion2", coordenada3, coordenada4);
 		
-		linea1 = new Linea(1, "rojo", estacion1, estacion2);
+		coordenada3Mock = mock(CoordenadasGPS.class);
+		when(coordenada3Mock.getLatitudGMS()).thenReturn("007°28'35\"N");
+		when(coordenada3Mock.getLongitudGMS()).thenReturn("007°28'35\"E");
+		coordenada4Mock = mock(CoordenadasGPS.class);
+		when(coordenada4Mock.getLatitudGMS()).thenReturn("000º00'00\"N");
+		when(coordenada4Mock.getLongitudGMS()).thenReturn("000º00'00\"E");
+		
+		estacion2Mock = mock(Estacion.class);
+		when(estacion2Mock.getNombre()).thenReturn("estacion2");
+		CoordenadasGPS[] estacion2coord = {coordenada3Mock, coordenada4Mock};
+		when(estacion2Mock.getCoordenadasGPS()).thenReturn(estacion2coord);
+		
+		linea1Mock = mock(Linea.class);
+		when(linea1Mock.getNumero()).thenReturn(1);
+		when(linea1Mock.getColor()).thenReturn("rojo");
+		Estacion[] estacionesLinea1 = {estacion1Mock, estacion2Mock};
+		when(linea1Mock.getEstaciones(true)).thenReturn(estacionesLinea1);
+		
 		
 		coordenada5 = new CoordenadasGPS("041°38'06\"S","135°05'59\"W");
 		coordenada6 = new CoordenadasGPS("034°30'06\"N","100°05'59\"E");
