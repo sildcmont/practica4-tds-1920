@@ -124,25 +124,6 @@ public class RedMetroTDDTest {
 		
 	}
 	
-	@Test
-	@Tag("TDD")
-	void testTDDConstructorJSON() {
-		String json = "\"[{\\\"dorsal\\\":6,\" + \"\\\"name\\\":\\\"Iniesta\\\",\"\n" + 
-				"                + \"\\\"demarcation\\\":[\\\"Right winger\\\",\\\"Midfielder\\\"],\"\n" + 
-				"                + \"\\\"team\\\":\\\"FC Barcelona\\\"}]\";";
-		RedMetro red = new RedMetro(json);
-		Linea[] esperado = {linea1, linea2};
-		assertArrayEquals(esperado, red.getLineas().toArray());
-		
-	}
-	
-	@Test
-	@Tag("TDD")
-	void testTDDConstructorJSONNull() {
-		String json = null;
-		assertThrows(IllegalArgumentException.class, () ->  red = new RedMetro(json));
-		
-	}
 	
 	
 	@Test
@@ -339,13 +320,6 @@ public class RedMetroTDDTest {
 		red = new RedMetro(linea1, linea2, linea3);
 		assertThrows(IllegalArgumentException.class, () ->  red.getEstacionCercana(null, 100));
 	}
-	
-	@Test
-	@Tag("TDD")
-	void testTDDgetJSON() {
-		red = new RedMetro(linea1, linea2, linea3);
-		String jsonEsperado = "";
-		assertEquals(jsonEsperado, red.getJSON());
-	}
+
 	
 }

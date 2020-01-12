@@ -13,18 +13,22 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<junit.jupiter.version>5.5.2</junit.jupiter.version>
 		<junit.platform.version>1.5.2</junit.platform.version>
+		<sonar.exclusions>CoordenadasGPS.java, Linea.java, Estacion.java</sonar.exclusions>
+
+
 	</properties>
+
 	<profiles>
 		<profile>
 			<id>allTests</id>
 			<properties>
-				<groups>TDD|Noticia|Boletin</groups>
+				<groups>TDD</groups>
 			</properties>
 		</profile>
 		<profile>
 			<id>Unit</id>
 			<properties>
-				<groups>TDD|Noticia|Boletin|BlackBox</groups>
+				<groups>BlackBox</groups>
 			</properties>
 		</profile>
 		<profile>
@@ -43,18 +47,6 @@
 			<id>Isolation</id>
 			<properties>
 				<groups>Isolation</groups>
-			</properties>
-		</profile>
-		<profile>
-			<id>soloNoticia</id>
-			<properties>
-				<groups>Noticia&amp;TDD</groups>
-			</properties>
-		</profile>
-		<profile>
-			<id>soloBoletin</id>
-			<properties>
-				<groups>Boletin&amp;TDD</groups>
 			</properties>
 		</profile>
 	</profiles>
@@ -110,6 +102,21 @@
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>2.22.2</version>
 			</plugin>
+			
+			<plugin>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.22.2</version>
+				<configuration>
+					<excludes>
+						<exclude>/CoordenadasGPS.java</exclude>
+						<exclude>/Linea.java</exclude>
+						<exclude>/Estacion.java</exclude>
+						<exclude>/RedMetroTDDTest.java</exclude>
+						<exclude>/RedMetroBlackBoxTest.java</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+			
 			<plugin>
 				<artifactId>maven-javadoc-plugin</artifactId>
 				<version>3.1.1</version>
