@@ -13,7 +13,7 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<junit.jupiter.version>5.5.2</junit.jupiter.version>
 		<junit.platform.version>1.5.2</junit.platform.version>
-		<sonar.exclusions>CoordenadasGPS.java, Linea.java, Estacion.java</sonar.exclusions>
+		<sonar.exclusions>/CoordenadasGPS.java, /Linea.java, /Estacion.java</sonar.exclusions>
 
 
 	</properties>
