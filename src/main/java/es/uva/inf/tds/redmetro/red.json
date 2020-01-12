@@ -1,0 +1,24 @@
+{
+	"lineas":[
+		{"numero": "1",
+		"color": "rojo",
+		"estaciones":[
+			{"nombre":"Estacion1",
+			 "latitud":"034°30'06\" N",
+			 "longitud":"100°05'59\" E"},
+			 {"nombre":"Estacion3",
+			 "latitud":"037°30'06\" N",
+			 "longitud":"120°05'59\" E"}
+		]},
+		{"numero": "2",
+		"color": "azul",
+		"estaciones":[
+			{"nombre":"Estacion2",
+			 "latitud":"175°38'06\" S",
+			 "longitud":"60°05'59 \"E"},
+			 {"nombre":"Estacion4",
+			 "latitud":"038°30'06\" N",
+			 "longitud":"130°05'59\" E"}
+		]}
+	]
+}
