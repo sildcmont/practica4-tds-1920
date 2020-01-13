@@ -9,6 +9,11 @@ import org.junit.jupiter.api.Test;
 
 import es.uva.inf.maps.CoordenadasGPS;
 
+/**
+ * 
+ * @author silmont
+ *
+ */
 public class RedMetroSequenceTest {
 	
 	private RedMetro red;

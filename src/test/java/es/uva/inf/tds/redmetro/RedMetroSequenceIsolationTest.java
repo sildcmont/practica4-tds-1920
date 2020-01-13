@@ -12,6 +12,11 @@ import org.mockito.Mock;
 
 import es.uva.inf.maps.CoordenadasGPS;
 
+/**
+ * 
+ * @author silmont
+ *
+ */
 public class RedMetroSequenceIsolationTest {
 	
 private RedMetro red;

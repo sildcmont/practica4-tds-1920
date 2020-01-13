@@ -1,12 +1,18 @@
 package es.uva.inf.tds.redmetro;
 
 import es.uva.inf.maps.*;
+
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+/**
+ * 
+ * @author silmont
+ *
+ */
 public class RedMetroBlackBoxTest {
 	
 	private RedMetro red;
