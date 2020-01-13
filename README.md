@@ -10,26 +10,30 @@ Se han empleado 2d, 3h y 30m en horas hombre para realizar esta practica
     *  SLOC: 351
     *  LLOC: 143
 *  RedMetroTDDTest.java
-    *  SLOC:
-    *  LLOC:
+    *  SLOC: 352
+    *  LLOC: 281
 *  RedMetroBlackBoxTest.java
-    *  SLOC:
-    *  LLOC:
+    *  SLOC: 205
+    *  LLOC: 169
 *  RedMetroTDDIsolationTest.java
-    *  SLOC:
-    *  LLOC:
+    *  SLOC: 602
+    *  LLOC: 453
 *  RedMetroBlackBoxIsolationTest.java
-    *  SLOC:
-    *  LLOC:
+    *  SLOC: 297
+    *  LLOC: 249
 *  RedMetroWhiteBoxTest.java
-    *  SLOC:
-    *  LLOC:
+    *  SLOC: 80
+    *  LLOC: 63
 *  RedMetroWhiteBoxIsolationTest.java
-    *  SLOC:
-    *  LLOC:
+    *  SLOC: 211
+    *  LLOC: 166
 *  RedMetroSequenceTest.java
-    *  SLOC:
-    *  LLOC:
+    *  SLOC: 66
+    *  LLOC: 47
 *  RedMetroSequenceIsolationTest.java
-    *  SLOC:
-    *  LLOC:
+    *  SLOC: 168
+    *  LLOC: 133
+
+
+## RATIO CODE TO TEST
+El ratio code to test es de 1:5 aproximadamente
